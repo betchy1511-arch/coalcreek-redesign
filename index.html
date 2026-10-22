@@ -321,6 +321,9 @@ p{margin:0}
 .towns b{font-weight:500;font-size:18px}
 .towns span{color:var(--ink-2)}
 .area-map .town,.towns li{cursor:pointer}
+.area-map:not(.picked) .route.hov{opacity:1;stroke-width:2.6}
+.area-map .town.hov circle{fill:#5E7461}
+.towns li.hov{background:var(--mist);padding-left:12px;padding-right:12px}
 .area-map.picked .route,.area-map.picked .traveler,.area-map.picked .ring{animation:none}
 .area-map.picked .route{opacity:.12;stroke-dashoffset:0}
 .area-map.picked .traveler{opacity:0}
@@ -862,11 +865,11 @@ p{margin:0}
   var am=document.querySelector('.area-map');
   if(am){
     if('IntersectionObserver' in window){am.classList.add('paused');new IntersectionObserver(function(es){es.forEach(function(e){am.classList.toggle('paused',!e.isIntersecting);});}).observe(am);}
-    var TAGS={Lafayette:[262,318,0,'You are here'],Louisville:[322,452,2.5],Broomfield:[388,414,4.7],Boulder:[200,386,9.4],Longmont:[362,150,11.6]};
-    var dg=am.querySelector('.dtags'),live=document.getElementById('dist-live'),picked=null,timer=null;
+    var TAGS={Lafayette:[262,318,0,'You are here'],Louisville:[232,452,2.5],Broomfield:[388,414,4.7],Boulder:[200,386,9.4],Longmont:[362,150,11.6]};
+    var dg=am.querySelector('.dtags'),live=document.getElementById('dist-live'),picked=null,t1=null,t2=null;
     var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var pick=function(n){
-      clearTimeout(timer);cancelAnimationFrame(timer);
+      clearTimeout(t1);cancelAnimationFrame(t2);
       document.querySelectorAll('.area-map .on,.towns .on').forEach(function(el){el.classList.remove('on');});
       document.querySelectorAll('.towns li').forEach(function(li){li.setAttribute('aria-pressed','false');});
       dg.innerHTML='';
@@ -881,12 +884,14 @@ p{margin:0}
       live.textContent=t[3]?n+' is home of the office.':n+' is about '+t[2]+' miles from the office.';
       if(still||t[3]){g.classList.add('show');return;}
       tx.textContent='0.0 mi';
-      timer=setTimeout(function(){g.classList.add('show');var s0=null;
-        var step=function(ts){if(!s0)s0=ts;var k=Math.min((ts-s0)/700,1),e=1-Math.pow(1-k,3);tx.textContent=(t[2]*e).toFixed(1)+' mi';if(k<1)timer=requestAnimationFrame(step);};
-        timer=requestAnimationFrame(step);},650);
+      t1=setTimeout(function(){g.classList.add('show');var s0=null;
+        var step=function(ts){if(!s0)s0=ts;var k=Math.min((ts-s0)/700,1),e=1-Math.pow(1-k,3);tx.textContent=(t[2]*e).toFixed(1)+' mi';if(k<1)t2=requestAnimationFrame(step);};
+        t2=requestAnimationFrame(step);},650);
     };
     document.querySelectorAll('.towns li,.area-map .town').forEach(function(el){var n=el.getAttribute('data-town');
       el.addEventListener('click',function(){pick(n);});
+      ['mouseenter','focus'].forEach(function(ev){el.addEventListener(ev,function(){document.querySelectorAll('[data-town="'+n+'"]').forEach(function(x){x.classList.add('hov');});});});
+      ['mouseleave','blur'].forEach(function(ev){el.addEventListener(ev,function(){document.querySelectorAll('[data-town="'+n+'"]').forEach(function(x){x.classList.remove('hov');});});});
       el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(n);}});});
   }
 })();
