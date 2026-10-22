@@ -320,6 +320,24 @@ p{margin:0}
 .towns li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid #BABBB0;font-variant-numeric:tabular-nums}
 .towns b{font-weight:500;font-size:18px}
 .towns span{color:var(--ink-2)}
+.area-map .town,.towns li{cursor:pointer}
+.area-map.picked .route,.area-map.picked .traveler,.area-map.picked .ring{animation:none}
+.area-map.picked .route{opacity:.12;stroke-dashoffset:0}
+.area-map.picked .traveler{opacity:0}
+.area-map.picked .town{opacity:.45;transition:opacity .3s}
+.area-map.picked .town.on{opacity:1}
+.area-map.picked .route.on{opacity:1;stroke-width:3;animation:pick-draw .8s cubic-bezier(.65,0,.35,1) both}
+.area-map.picked .traveler.on{opacity:1;animation:pick-travel .8s cubic-bezier(.65,0,.35,1) both}
+@keyframes pick-draw{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+@keyframes pick-travel{from{offset-distance:0%}to{offset-distance:100%}}
+.area-map .dtag{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.6);transition:opacity .25s,transform .35s cubic-bezier(.3,1.5,.5,1)}
+.area-map .dtag.show{opacity:1;transform:scale(1)}
+.area-map .dtag rect{fill:#5E7461}
+.area-map .dtag text{font:600 15px var(--font);fill:#fff;stroke:none;font-variant-numeric:tabular-nums}
+.towns li[aria-pressed="true"]{background:var(--mist);padding-left:12px;padding-right:12px}
+.towns li[aria-pressed="true"] b{color:var(--green)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){.area-map.picked .route.on,.area-map.picked .traveler.on{animation:none}.area-map .dtag{transition:none}}
 .area-note{font-size:13px;color:var(--ink-2);margin-bottom:22px}
 .map-embed{position:relative;border-radius:18px;overflow:hidden;min-height:420px;background:var(--mist)}
 .map-embed iframe,.map-embed .map-img{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
@@ -466,6 +484,7 @@ p{margin:0}
   .area-map .you-l{font-size:21px}
   .area-map .long{display:none}
   .area-map .short{display:inline}
+  .area-map .dtag text{font-size:21px}
 }
 
 /* Phone fixes */
@@ -733,6 +752,7 @@ p{margin:0}
         <path class="route" data-town="Boulder" d="M330 372 L69 343" pathLength="100" style="--i:2"/><circle class="traveler" r="4" style="offset-path:path('M330 372 L69 343');--i:2"/>
         <path class="route" data-town="Longmont" d="M330 372 L319 49" pathLength="100" style="--i:3"/><circle class="traveler" r="4" style="offset-path:path('M330 372 L319 49');--i:3"/>
         </g>
+        <g class="dtags" aria-hidden="true"></g>
         <circle class="opulse" cx="330" cy="372" r="15" fill="none" stroke="#5E7461" stroke-width="2"/>
         <text x="508" y="38" text-anchor="middle" class="rl">N</text><path d="M508 44 l-6 14 h12 z" fill="#5E7461"/>
         <g class="town" data-town="Louisville"><circle cx="275" cy="415" r="7" fill="#fff" stroke="#5E7461" stroke-width="3"/><text x="263" y="420" text-anchor="end" class="tn">Louisville</text></g>
@@ -745,13 +765,14 @@ p{margin:0}
     </div>
     <div>
       <div class="head" style="margin-bottom:18px"><p class="eyebrow">Service area</p><h2 id="area-h"><span class="ht">Serving <em>Lafayette</em> and Nearby Towns</span></h2></div>
-      <p class="lede">The office sits on Baseline Road in Lafayette. Here is how far each nearby town is, in a straight line.</p>
+      <p class="lede">The office sits on Baseline Road in Lafayette. Here is how far each nearby town is, in a straight line. Pick a town to see it on the map.</p>
+      <p class="sr-only" id="dist-live" aria-live="polite"></p>
       <ul class="towns">
-        <li data-town="Lafayette" tabindex="0"><b>Lafayette</b><span>Home of the office</span></li>
-        <li data-town="Louisville" tabindex="0"><b>Louisville</b><span>About 2.5 miles</span></li>
-        <li data-town="Broomfield" tabindex="0"><b>Broomfield</b><span>About 4.7 miles</span></li>
-        <li data-town="Boulder" tabindex="0"><b>Boulder</b><span>About 9.4 miles</span></li>
-        <li data-town="Longmont" tabindex="0"><b>Longmont</b><span>About 11.6 miles</span></li>
+        <li data-town="Lafayette" tabindex="0" role="button" aria-pressed="false"><b>Lafayette</b><span>Home of the office</span></li>
+        <li data-town="Louisville" tabindex="0" role="button" aria-pressed="false"><b>Louisville</b><span>About 2.5 miles</span></li>
+        <li data-town="Broomfield" tabindex="0" role="button" aria-pressed="false"><b>Broomfield</b><span>About 4.7 miles</span></li>
+        <li data-town="Boulder" tabindex="0" role="button" aria-pressed="false"><b>Boulder</b><span>About 9.4 miles</span></li>
+        <li data-town="Longmont" tabindex="0" role="button" aria-pressed="false"><b>Longmont</b><span>About 11.6 miles</span></li>
       </ul>
       <p class="area-note">Approximate straight-line distance from 310 W. Baseline Rd. to each town's mapped center point, not driving distance.</p>
       <div class="btns"><a class="btn fill" href="https://coalcreekchiro.janeapp.com" target="_blank" rel="noopener">Book Appointment</a><a class="textlink" href="#visit">See office hours</a></div>
@@ -841,10 +862,32 @@ p{margin:0}
   var am=document.querySelector('.area-map');
   if(am){
     if('IntersectionObserver' in window){am.classList.add('paused');new IntersectionObserver(function(es){es.forEach(function(e){am.classList.toggle('paused',!e.isIntersecting);});}).observe(am);}
-    var hl=function(n,on){document.querySelectorAll('[data-town="'+n+'"]').forEach(function(el){el.classList.toggle('on',on);});};
+    var TAGS={Lafayette:[262,318,0,'You are here'],Louisville:[322,452,2.5],Broomfield:[388,414,4.7],Boulder:[200,386,9.4],Longmont:[362,150,11.6]};
+    var dg=am.querySelector('.dtags'),live=document.getElementById('dist-live'),picked=null,timer=null;
+    var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var pick=function(n){
+      clearTimeout(timer);cancelAnimationFrame(timer);
+      document.querySelectorAll('.area-map .on,.towns .on').forEach(function(el){el.classList.remove('on');});
+      document.querySelectorAll('.towns li').forEach(function(li){li.setAttribute('aria-pressed','false');});
+      dg.innerHTML='';
+      if(picked===n){picked=null;am.classList.remove('picked');live.textContent='';return;}
+      picked=n;am.classList.remove('picked');void am.offsetWidth;am.classList.add('picked');
+      document.querySelectorAll('[data-town="'+n+'"]').forEach(function(el){el.classList.add('on');if(el.tagName==='LI')el.setAttribute('aria-pressed','true');});
+      var r=am.querySelector('.route[data-town="'+n+'"]');if(r&&r.nextElementSibling)r.nextElementSibling.classList.add('on');
+      var t=TAGS[n],NS='http://www.w3.org/2000/svg',g=document.createElementNS(NS,'g'),bg=document.createElementNS(NS,'rect'),tx=document.createElementNS(NS,'text');
+      g.setAttribute('class','dtag');tx.setAttribute('x',t[0]);tx.setAttribute('y',t[1]);tx.setAttribute('text-anchor','middle');tx.setAttribute('dominant-baseline','central');
+      var fin=t[3]||(t[2]+' mi');tx.textContent=fin;g.appendChild(bg);g.appendChild(tx);dg.appendChild(g);
+      var b=tx.getBBox();bg.setAttribute('x',b.x-12);bg.setAttribute('y',b.y-7);bg.setAttribute('width',b.width+24);bg.setAttribute('height',b.height+14);bg.setAttribute('rx',(b.height+14)/2);
+      live.textContent=t[3]?n+' is home of the office.':n+' is about '+t[2]+' miles from the office.';
+      if(still||t[3]){g.classList.add('show');return;}
+      tx.textContent='0.0 mi';
+      timer=setTimeout(function(){g.classList.add('show');var s0=null;
+        var step=function(ts){if(!s0)s0=ts;var k=Math.min((ts-s0)/700,1),e=1-Math.pow(1-k,3);tx.textContent=(t[2]*e).toFixed(1)+' mi';if(k<1)timer=requestAnimationFrame(step);};
+        timer=requestAnimationFrame(step);},650);
+    };
     document.querySelectorAll('.towns li,.area-map .town').forEach(function(el){var n=el.getAttribute('data-town');
-      ['mouseenter','focus'].forEach(function(ev){el.addEventListener(ev,function(){hl(n,true);});});
-      ['mouseleave','blur'].forEach(function(ev){el.addEventListener(ev,function(){hl(n,false);});});});
+      el.addEventListener('click',function(){pick(n);});
+      el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(n);}});});
   }
 })();
 </script>
