@@ -440,11 +440,12 @@ p{margin:0}
 
 /* Closing band: full-bleed photo with scrim, bookends the hero */
 .close{position:relative;color:#fff;background:var(--night);overflow:hidden}
-.close img{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;opacity:.5}
-.close::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,0,2,.95) 0%,rgba(0,0,2,.86) 55%,rgba(0,0,2,.7) 100%)}
+.close img{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;opacity:1}
+.close::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,2,.62) 0%,rgba(0,0,2,.5) 50%,rgba(0,0,2,.66) 100%)}
+.close h2,.close p{text-shadow:0 2px 14px rgba(0,0,2,.55)}
 .close .wrap{position:relative;z-index:2;padding-block:clamp(64px,8vw,110px);text-align:center;display:grid;justify-items:center;gap:18px}
 .close h2{font-size:clamp(30px,4vw,52px);max-width:22ch}
-.close p{color:#BABBB0;max-width:52ch}
+.close p{color:#FFFFFF;max-width:52ch}
 .close .btns{margin-top:8px}
 
 /* Footer */
@@ -664,6 +665,12 @@ p{margin:0}
 .faq1 .faq-list{margin-top:6px}
 .area-line{text-align:center;margin:26px auto 0;max-width:62ch}
 
+/* Closing band: lighter scrim than the homepage so the photo reads as a photo */
+.close img{opacity:1}
+.close::before{background:linear-gradient(180deg,rgba(0,0,2,.62) 0%,rgba(0,0,2,.5) 50%,rgba(0,0,2,.66) 100%)}
+.close h2,.close p{text-shadow:0 2px 14px rgba(0,0,2,.55)}
+.close p{color:#FFFFFF}
+
 /* Closing strip */
 .pcta{background:#000002;color:#fff;text-align:center}
 .pcta .wrap{padding-block:clamp(48px,6vw,80px);display:grid;justify-items:center;gap:16px}
@@ -839,7 +846,7 @@ p{margin:0}
     </div>
   </div>
 </section>
-<section class="close on-dark" aria-labelledby="pc-h"><img src="../assets/office.jpg" alt="" width="1400" height="900" loading="lazy" style="object-position:50% 30%"><div class="wrap"><h2 id="pc-h">Injured? Don't Wait to Get Evaluated</h2><p>Coal Creek Chiropractic is here to help. Call us or request an appointment online. Same-day appointments available.</p>
+<section class="close on-dark" aria-labelledby="pc-h"><img src="../assets/office.jpg" alt="" width="1400" height="900" style="object-position:50% 30%"><div class="wrap"><h2 id="pc-h">Injured? Don't Wait to Get Evaluated</h2><p>Coal Creek Chiropractic is here to help. Call us or request an appointment online. Same-day appointments available.</p>
 <div class="btns center"><a class="btn fill" href="https://coalcreekchiro.janeapp.com" target="_blank" rel="noopener">Book Appointment</a><a class="btn line" href="tel:7207752664">Call (720) 775-2664</a></div></div></section>
 </main>
 <footer class="foot">
