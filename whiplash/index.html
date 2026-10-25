@@ -664,6 +664,9 @@ p{margin:0}
 
 /* FAQ, single column on inner pages */
 .faq-list .area-line{margin:14px 0 0;max-width:62ch}
+/* Keep the photo and heading inside their column so nothing slides under the FAQ cards */
+.faq-side{grid-template-columns:minmax(0,1fr)}
+.faq-side h2.one-line{white-space:normal;font-size:clamp(26px,2.1vw,32px)}
 @media (max-width:1100px){.faq-side h2.one-line{white-space:normal}}
 /* Call-to-action card under the FAQ list */
 .faq-cta{margin-top:14px;border:1px solid #BABBB0;border-radius:var(--r);background:#FFFFFF;padding:clamp(20px,2.4vw,28px);display:grid;gap:16px}
