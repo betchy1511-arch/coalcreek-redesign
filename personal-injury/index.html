@@ -91,6 +91,8 @@ p{margin:0}
 .dd-menu{position:absolute;top:calc(100% + 12px);left:-16px;min-width:230px;background:#FFFFFF;border:1px solid #BABBB0;border-radius:14px;padding:8px;display:grid;gap:2px;box-shadow:0 18px 40px rgba(0,0,2,.14);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .2s ease,transform .2s ease,visibility .2s;z-index:60}
 .dd-menu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
 .nav-dd:hover .dd-menu,.nav-dd:focus-within .dd-menu,.nav-dd.open .dd-menu{opacity:1;visibility:visible;transform:none}
+.nav-dd.shut .dd-menu{opacity:0;visibility:hidden;transform:translateY(-6px)}
+.nav-dd.shut .dd-btn svg{transform:none}
 .nav .dd-menu a{padding:10px 14px;border-radius:9px;border:0;border-left:3px solid transparent;font-size:15px}
 .nav .dd-menu a:hover,.nav .dd-menu a[aria-current]{color:var(--green);border-left-color:var(--green)}
 .mobile-nav a.sub{padding-left:22px;font-size:15px}
@@ -1036,9 +1038,13 @@ p{margin:0}
   var sc=document.querySelectorAll('.pi-sc');
   if(sc.length&&'IntersectionObserver' in window){var so=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('play',e.isIntersecting);});});[].forEach.call(sc,function(el){so.observe(el);});}
   var dd=document.getElementById('ddCar');
-  if(dd){var db=dd.querySelector('.dd-btn');db.addEventListener('click',function(){var o=dd.classList.toggle('open');db.setAttribute('aria-expanded',String(o));});
-    document.addEventListener('click',function(e){if(!dd.contains(e.target)){dd.classList.remove('open');db.setAttribute('aria-expanded','false');}});
-    dd.addEventListener('keydown',function(e){if(e.key==='Escape'){dd.classList.remove('open');db.setAttribute('aria-expanded','false');db.focus();}});}
+  if(dd){var db=dd.querySelector('.dd-btn');
+    function ddSet(o){dd.classList.toggle('open',o);dd.classList.toggle('shut',!o);db.setAttribute('aria-expanded',String(o));}
+    db.addEventListener('click',function(){ddSet(!dd.classList.contains('open'));});
+    document.addEventListener('click',function(e){if(!dd.contains(e.target)){dd.classList.remove('open','shut');db.setAttribute('aria-expanded','false');}});
+    dd.addEventListener('keydown',function(e){if(e.key==='Escape'){ddSet(false);db.focus();}});
+    dd.addEventListener('mouseleave',function(){dd.classList.remove('shut');});
+    dd.addEventListener('focusout',function(e){if(!dd.contains(e.relatedTarget)){dd.classList.remove('open','shut');db.setAttribute('aria-expanded','false');}});}
   var tr=document.querySelector('.team-rings');
   if(tr&&'IntersectionObserver' in window){tr.classList.add('paused');new IntersectionObserver(function(es){es.forEach(function(e){tr.classList.toggle('paused',!e.isIntersecting);});}).observe(tr);}
   var ig=document.getElementById('injGrid');
