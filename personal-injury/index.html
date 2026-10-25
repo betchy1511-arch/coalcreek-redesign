@@ -558,8 +558,44 @@ p{margin:0}
   .head-cta{display:none}
 }
 
-/* Personal injury reasons grid: homepage injuries grid with line icons */
-.pi-inj .pi-li{width:44px;height:44px;color:var(--green);margin-bottom:14px;display:block}
+/* Personal injury: photo tiles (cases) and photo cards (6 reasons) */
+.pi-tiles{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);grid-auto-rows:minmax(290px,auto);gap:16px}
+.pi-tile{position:relative;overflow:hidden;border-radius:18px;isolation:isolate;display:flex;align-items:flex-end;min-height:290px}
+.pi-tile.big{grid-row:span 2}
+.pi-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.pi-tile::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,2,0) 25%,rgba(0,0,2,.55) 55%,rgba(0,0,2,.88) 100%)}
+.pi-tile .ph-tag{z-index:1}
+.pi-tile .tx{padding:clamp(20px,2.2vw,30px);color:#FFFFFF;display:grid;gap:8px}
+.pi-tile .n{font-size:13px;font-weight:500;letter-spacing:.18em;color:#FFFFFF;display:flex;align-items:center;gap:12px}
+.pi-tile .n::after{content:"";height:2px;width:28px;background:#FFFFFF;transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.pi-tile h3{color:#FFFFFF;font-size:clamp(20px,1.7vw,24px)}
+.pi-tile.big h3{font-size:clamp(26px,2.4vw,34px)}
+.pi-tile p{color:#FFFFFF;font-size:15.5px;max-width:42ch}
+.pi-tile:hover img{transform:scale(1.07)}
+.pi-tile:hover .n::after{width:64px}
+.pi-rcs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.pi-rc{position:relative;background:#FFFFFF;border:1px solid #BABBB0;border-radius:18px;overflow:hidden;transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .3s}
+.pi-rc figure{margin:0;position:relative;aspect-ratio:16/10;overflow:hidden}
+.pi-rc img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.pi-rc .num{position:absolute;left:24px;top:0;width:54px;height:54px;border-radius:50%;background:var(--green);color:#FFFFFF;display:grid;place-items:center;font-weight:500;font-size:17px;border:4px solid #FFFFFF;transform:translateY(-50%)}
+.pi-rc .bd{padding:38px 26px 28px;display:grid;gap:8px;position:relative}
+.pi-rc h3{font-size:20px}
+.pi-rc p{font-size:16px}
+.pi-rc:hover{transform:translateY(-6px);border-color:var(--green)}
+.pi-rc:hover img{transform:scale(1.07)}
+.pi-rcs + .inj-note{margin-top:28px}
+/* entrance: tiles wipe up, cards rise, photos settle from a slight zoom */
+.pi-anim .pi-rv{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--d,0) * 120ms)}
+.pi-anim .pi-tile.pi-rv{transform:none;clip-path:inset(18% 0 0 0 round 18px)}
+.pi-anim .pi-tile.pi-rv{transition:opacity .8s ease,clip-path 1s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--d,0) * 120ms)}
+.pi-anim .pi-rv img{transform:scale(1.14)}
+.pi-anim .pi-rv.in{opacity:1;transform:none;clip-path:inset(0 0 0 0 round 18px)}
+.pi-anim .pi-rv.in img{transform:none}
+.pi-anim .pi-rv.in:hover img{transform:scale(1.07)}
+.pi-anim .pi-rc.pi-rv.in:hover{transform:translateY(-6px)}
+@media (max-width:1024px){.pi-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.pi-tile.big{grid-column:span 2;grid-row:auto;min-height:360px}.pi-rcs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.pi-tiles,.pi-rcs{grid-template-columns:minmax(0,1fr)}.pi-tile.big{grid-column:auto;min-height:320px}}
+@media (prefers-reduced-motion:reduce){.pi-tile img,.pi-rc,.pi-rc img,.pi-tile .n::after{transition:none}.pi-tile:hover img,.pi-rc:hover img{transform:none}.pi-rc:hover{transform:none}}
 
 /* ---------- Inner pages ---------- */
 .pb{border-bottom:1px solid #BABBB0;overflow:hidden}
@@ -765,29 +801,25 @@ p{margin:0}
 
 <section class="band" id="cases" aria-labelledby="cs-h" style="padding-top:0"><div class="wrap">
 <div class="head"><p class="eyebrow">What we treat</p><h2 id="cs-h"><span class="ht">Personal Injury Cases <em>We See</em></span></h2></div>
-<div class="path">
-<figure class="path-photo"><img src="../assets/trail.jpg" alt="A mountain trail through pine forest under a blue sky" width="1400" height="788"></figure>
-<div><ol class="steps">
-<li><div><h3>Slip and Fall Accidents</h3><p>Injuries from wet floors, uneven surfaces or unsafe conditions on someone else's property.</p></div></li>
-<li><div><h3>Workplace Injuries</h3><p>Strains, falls and impact injuries that happen on the job, often eligible for workers' compensation.</p></div></li>
-<li><div><h3>Sports and Recreational Injuries</h3><p>Acute trauma from athletic activities that causes spinal, joint or soft tissue damage.</p></div></li>
-<li><div><h3>Motor Vehicle Accidents</h3><p>Whiplash, neck and back injuries from car, truck and motorcycle collisions.</p></div></li>
-<li><div><h3>Premises Liability Injuries</h3><p>Injuries caused by negligent property maintenance or unsafe conditions.</p></div></li>
-</ol>
-<div class="btns path-cta"><a class="btn fill" href="https://coalcreekchiro.janeapp.com" target="_blank" rel="noopener">Book an Appointment</a></div></div>
-</div></div></section>
+<ul class="pi-tiles">
+<li class="pi-tile pi-rv big" style="--d:0"><img src="../assets/pi_car.jpg" alt="Placeholder photo: the dented front bumper and headlight of a car after a collision" width="1200" height="800" loading="lazy" style="object-position:28% 62%"><span class="ph-tag">Placeholder photo</span><div class="tx"><span class="n">01</span><h3>Motor Vehicle Accidents</h3><p>Whiplash, neck and back injuries from car, truck and motorcycle collisions.</p></div></li>
+<li class="pi-tile pi-rv" style="--d:1"><img src="../assets/pi_slip.jpg" alt="Placeholder photo: a yellow wet floor caution sign on a tiled floor" width="1200" height="800" loading="lazy" style="object-position:50% 60%"><span class="ph-tag">Placeholder photo</span><div class="tx"><span class="n">02</span><h3>Slip and Fall Accidents</h3><p>Injuries from wet floors, uneven surfaces or unsafe conditions on someone else's property.</p></div></li>
+<li class="pi-tile pi-rv" style="--d:2"><img src="../assets/pi_work.jpg" alt="Placeholder photo: a worker carrying cardboard boxes outside a warehouse" width="1200" height="800" loading="lazy" style="object-position:62% 50%"><span class="ph-tag">Placeholder photo</span><div class="tx"><span class="n">03</span><h3>Workplace Injuries</h3><p>Strains, falls and impact injuries that happen on the job, often eligible for workers' compensation.</p></div></li>
+<li class="pi-tile pi-rv" style="--d:3"><img src="../assets/pi_sport.jpg" alt="Placeholder photo: a soccer player on the grass holding an injured knee" width="1200" height="800" loading="lazy" style="object-position:40% 60%"><span class="ph-tag">Placeholder photo</span><div class="tx"><span class="n">04</span><h3>Sports and Recreational Injuries</h3><p>Acute trauma from athletic activities that causes spinal, joint or soft tissue damage.</p></div></li>
+<li class="pi-tile pi-rv" style="--d:4"><img src="../assets/pi_prem.jpg" alt="Placeholder photo: worn wooden stairs with broken boards" width="1200" height="800" loading="lazy" style="object-position:50% 55%"><span class="ph-tag">Placeholder photo</span><div class="tx"><span class="n">05</span><h3>Premises Liability Injuries</h3><p>Injuries caused by negligent property maintenance or unsafe conditions.</p></div></li>
+</ul></div></section>
 
 <section class="band mist" id="reasons" aria-labelledby="rs-h"><div class="wrap">
 <div class="head"><p class="eyebrow">Why it matters</p><h2 id="rs-h"><span class="ht">6 Reasons <em>Chiropractic Care</em> Is Essential After an Injury</span></h2></div>
-<div class="inj-wrap"><figure class="inj-photo"><img src="../assets/table.jpg" alt="The adjusting table in the Coal Creek Chiropractic treatment room" width="840" height="747"></figure><div class="inj pi-inj">
-<div><svg class="pi-li" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><circle cx="12" cy="12" r="2.5"/></svg><h3>Injuries Aren't Always Obvious</h3><p>Soft tissue injuries, whiplash and spinal joint dysfunctions often don't cause immediate pain. Symptoms can appear days or even weeks after an incident, which makes prompt evaluation critical.</p></div>
-<div><svg class="pi-li" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 13h5M10 17h5"/></svg><h3>Protect Your Legal Rights</h3><p>Prompt chiropractic care creates a documented medical record of your injuries. This documentation is often essential for personal injury claims and insurance negotiations.</p></div>
-<div><svg class="pi-li" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-9 6-14 14-14 0 8-5 14-14 14z"/><path d="M5 19l8-8"/></svg><h3>Natural, Drug-Free Recovery</h3><p>Chiropractic care addresses the root cause of pain, not just the symptoms. Spinal adjustments, soft tissue therapy and rehabilitation help your body heal without relying on pain medication.</p></div>
-<div><svg class="pi-li" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><h3>Prevent Chronic Pain</h3><p>Untreated personal injury can develop into chronic conditions over time. Early chiropractic care can keep short-term injuries from becoming long-term problems.</p></div>
-<div><svg class="pi-li" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5h6v2"/><path d="M3 13h18"/></svg><h3>We Work With Your Attorney</h3><p>Our team coordinates directly with personal injury attorneys so your medical records, treatment notes and billing are organized and ready to support your case. See <a class="inlink" href="https://coalcreekchiro.com/expert-witness">chiropractic expert witness support in Lafayette</a>.</p></div>
-<div><svg class="pi-li" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><h3>Same-Day Appointments</h3><p>The sooner treatment begins, the better your recovery and the stronger your case documentation. Personal injury patients are seen as quickly as possible.</p></div>
-</div></div>
-<div class="inj-note"><p>Not sure where your injury fits? Call the office and ask.</p><div class="btns"><a class="btn fill" href="https://coalcreekchiro.janeapp.com" target="_blank" rel="noopener">Book an Appointment</a><a class="btn line" href="tel:7207752664">Call (720) 775-2664</a></div></div>
+<div class="pi-rcs">
+<article class="pi-rc pi-rv" style="--d:0"><figure><img src="../assets/ph_pi.jpg" alt="Placeholder photo: a hand pressing on a sore neck" width="1200" height="800" loading="lazy"><span class="ph-tag">Placeholder photo</span></figure><div class="bd"><span class="num" aria-hidden="true">01</span><h3>Injuries Aren't Always Obvious</h3><p>Soft tissue injuries, whiplash and spinal joint dysfunctions often don't cause immediate pain. Symptoms can appear days or even weeks after an incident, which makes prompt evaluation critical.</p></div></article>
+<article class="pi-rc pi-rv" style="--d:1"><figure><img src="../assets/pi_legal.jpg" alt="Placeholder photo: hands signing a document with a pen" width="1200" height="800" loading="lazy"><span class="ph-tag">Placeholder photo</span></figure><div class="bd"><span class="num" aria-hidden="true">02</span><h3>Protect Your Legal Rights</h3><p>Prompt chiropractic care creates a documented medical record of your injuries. This documentation is often essential for personal injury claims and insurance negotiations.</p></div></article>
+<article class="pi-rc pi-rv" style="--d:2"><figure><img src="../assets/pi_drug.jpg" alt="Placeholder photo: white tablets spilling from an orange pill bottle" width="1200" height="800" loading="lazy"><span class="ph-tag">Placeholder photo</span></figure><div class="bd"><span class="num" aria-hidden="true">03</span><h3>Natural, Drug-Free Recovery</h3><p>Chiropractic care addresses the root cause of pain, not just the symptoms. Spinal adjustments, soft tissue therapy and rehabilitation help your body heal without relying on pain medication.</p></div></article>
+<article class="pi-rc pi-rv" style="--d:0"><figure><img src="../assets/pi_back.jpg" alt="Placeholder photo: two hands pressed on a sore lower back" width="1200" height="800" loading="lazy"><span class="ph-tag">Placeholder photo</span></figure><div class="bd"><span class="num" aria-hidden="true">04</span><h3>Prevent Chronic Pain</h3><p>Untreated personal injury can develop into chronic conditions over time. Early chiropractic care can keep short-term injuries from becoming long-term problems.</p></div></article>
+<article class="pi-rc pi-rv" style="--d:1"><figure><img src="../assets/ph_atty.jpg" alt="Placeholder photo: case documents on a desk beside a Lady Justice statue" width="1200" height="800" loading="lazy"><span class="ph-tag">Placeholder photo</span></figure><div class="bd"><span class="num" aria-hidden="true">05</span><h3>We Work With Your Attorney</h3><p>Our team coordinates directly with personal injury attorneys so your medical records, treatment notes and billing are organized and ready to support your case. See <a class="inlink" href="https://coalcreekchiro.com/expert-witness">chiropractic expert witness support in Lafayette</a>.</p></div></article>
+<article class="pi-rc pi-rv" style="--d:2"><figure><img src="../assets/pi_cal.jpg" alt="Placeholder photo: a pen circling a date on a desk calendar" width="1200" height="800" loading="lazy"><span class="ph-tag">Placeholder photo</span></figure><div class="bd"><span class="num" aria-hidden="true">06</span><h3>Same-Day Appointments</h3><p>The sooner treatment begins, the better your recovery and the stronger your case documentation. Personal injury patients are seen as quickly as possible.</p></div></article>
+</div>
+<div class="inj-note pi-rv"><p>Not sure where your injury fits? Call the office and ask.</p><div class="btns"><a class="btn fill" href="https://coalcreekchiro.janeapp.com" target="_blank" rel="noopener">Book an Appointment</a><a class="btn line" href="tel:7207752664">Call (720) 775-2664</a></div></div>
 </div></section>
 <section class="band" id="services" aria-labelledby="svc-h">
   <div class="wrap">
@@ -922,6 +954,12 @@ p{margin:0}
   if(tb&&ts){tb.addEventListener('click',function(){var on=ts.classList.toggle('user-paused');tb.setAttribute('aria-pressed',String(on));tb.setAttribute('aria-label',on?'Play the scrolling badges':'Pause the scrolling badges');});}
   var rb=document.getElementById('rvBtn'),rf=document.querySelector('.rv-feed');
   if(rb&&rf){rb.addEventListener('click',function(){var on=rf.classList.toggle('user-paused');rb.setAttribute('aria-pressed',String(on));rb.setAttribute('aria-label',on?'Play the scrolling reviews':'Pause the scrolling reviews');});}
+  var rv=document.querySelectorAll('.pi-rv');
+  if(rv.length&&'IntersectionObserver' in window&&!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)){
+    document.documentElement.classList.add('pi-anim');
+    var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting||e.boundingClientRect.top<0){e.target.classList.add('in');ro.unobserve(e.target);}});},{rootMargin:'0px 0px -12% 0px'});
+    [].forEach.call(rv,function(el){ro.observe(el);});
+  }
   var tr=document.querySelector('.team-rings');
   if(tr&&'IntersectionObserver' in window){tr.classList.add('paused');new IntersectionObserver(function(es){es.forEach(function(e){tr.classList.toggle('paused',!e.isIntersecting);});}).observe(tr);}
   var ig=document.getElementById('injGrid');
