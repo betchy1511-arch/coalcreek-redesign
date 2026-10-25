@@ -843,6 +843,7 @@ p{margin:0}
   </div>
 </section>
 
+
 <section class="band" id="visit" aria-labelledby="visit-h">
   <div class="wrap">
     <div class="head"><p class="eyebrow">Visit the office</p><h2 id="visit-h"><span class="ht">The White Cottage on <em>Baseline Road</em></span></h2></div>
@@ -881,6 +882,8 @@ p{margin:0}
   n.addEventListener('click',function(e){if(e.target.tagName==='A'){n.classList.remove('open');b.setAttribute('aria-expanded','false');}});
   var tb=document.getElementById('trustBtn'),ts=document.querySelector('.trust');
   if(tb&&ts){tb.addEventListener('click',function(){var on=ts.classList.toggle('user-paused');tb.setAttribute('aria-pressed',String(on));tb.setAttribute('aria-label',on?'Play the scrolling badges':'Pause the scrolling badges');});}
+  var rb=document.getElementById('rvBtn'),rf=document.querySelector('.rv-feed');
+  if(rb&&rf){rb.addEventListener('click',function(){var on=rf.classList.toggle('user-paused');rb.setAttribute('aria-pressed',String(on));rb.setAttribute('aria-label',on?'Play the scrolling reviews':'Pause the scrolling reviews');});}
   var tr=document.querySelector('.team-rings');
   if(tr&&'IntersectionObserver' in window){tr.classList.add('paused');new IntersectionObserver(function(es){es.forEach(function(e){tr.classList.toggle('paused',!e.isIntersecting);});}).observe(tr);}
   var ig=document.getElementById('injGrid');
