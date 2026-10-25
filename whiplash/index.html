@@ -82,6 +82,20 @@ p{margin:0}
 .nav{display:flex;gap:22px;margin-left:auto}
 .nav a{white-space:nowrap;text-decoration:none;font-weight:500;font-size:15px;color:var(--ink-2);padding:6px 0;border-bottom:2px solid transparent}
 .nav a:hover,.nav a[aria-current]{color:var(--ink);border-color:var(--green)}
+.nav{align-items:center}
+.nav-dd{position:relative;display:flex;align-items:center;gap:2px}
+.nav-dd.on > .dd-top{color:var(--ink);border-color:var(--green)}
+.dd-btn{background:none;border:0;padding:6px 2px;margin:0;cursor:pointer;color:var(--ink-2);display:grid;place-items:center}
+.dd-btn svg{width:15px;height:15px;transition:transform .2s ease}
+.nav-dd:hover .dd-btn svg,.nav-dd.open .dd-btn svg{transform:rotate(180deg)}
+.dd-menu{position:absolute;top:calc(100% + 12px);left:-16px;min-width:230px;background:#FFFFFF;border:1px solid #BABBB0;border-radius:14px;padding:8px;display:grid;gap:2px;box-shadow:0 18px 40px rgba(0,0,2,.14);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .2s ease,transform .2s ease,visibility .2s;z-index:60}
+.dd-menu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+.nav-dd:hover .dd-menu,.nav-dd:focus-within .dd-menu,.nav-dd.open .dd-menu{opacity:1;visibility:visible;transform:none}
+.nav .dd-menu a{padding:10px 14px;border-radius:9px;border:0;border-left:3px solid transparent;font-size:15px}
+.nav .dd-menu a:hover,.nav .dd-menu a[aria-current]{color:var(--green);border-left-color:var(--green)}
+.mobile-nav a.sub{padding-left:22px;font-size:15px}
+.mobile-nav a[aria-current]{color:var(--green)}
+@media (prefers-reduced-motion:reduce){.dd-menu,.dd-btn svg{transition:none}}
 .head-cta{display:flex;gap:10px}
 .hc-short{display:none}
 .site-head .bar{position:relative}
@@ -466,6 +480,7 @@ p{margin:0}
 
 
 @media (max-width:1320px){.head-cta .line{display:none}}
+@media (max-width:1180px){.nav{gap:15px}}
 @media (max-width:1080px){
   .nav{display:none}
   .menu-btn{display:block;margin-left:0}
@@ -797,7 +812,8 @@ p{margin:0}
     <a class="brand" href="../" aria-label="Coal Creek Chiropractic, Home"><img src="../assets/logo_dark.png" alt="Coal Creek Chiropractic" width="253" height="44"></a>
     <nav class="nav" aria-label="Main">
       <a href="../">Home</a>
-      <a href="../auto-accident-care/" aria-current="page">Car Accident Care</a>
+      <div class="nav-dd on" id="ddCar"><a class="dd-top" href="../auto-accident-care/">Car Accident Care</a><button class="dd-btn" type="button" aria-expanded="false" aria-controls="ddCarMenu" aria-label="Show car accident care pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="dd-menu" id="ddCarMenu"><a href="../auto-accident-care/">Car Accident Care</a><a href="../personal-injury/">Personal Injury</a><a href="../whiplash/" aria-current="page">Whiplash</a></div></div>
       <a href="#services">Services</a>
       <a href="../#attorneys">For Attorneys</a>
       <a href="../#doctor">About</a>
@@ -811,7 +827,7 @@ p{margin:0}
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mnav" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
   <div class="wrap"><nav class="mobile-nav" id="mnav" aria-label="Mobile">
-    <a href="../">Home</a><a href="../auto-accident-care/">Car Accident Care</a><a href="#services">Services</a><a href="../#attorneys">For Attorneys</a><a href="../#doctor">About</a><a href="#visit">Contact</a><a href="tel:7207752664">Call (720) 775-2664</a>
+    <a href="../">Home</a><a href="../auto-accident-care/">Car Accident Care</a><a class="sub" href="../personal-injury/">Personal Injury</a><a class="sub" href="../whiplash/" aria-current="page">Whiplash</a><a href="#services">Services</a><a href="../#attorneys">For Attorneys</a><a href="../#doctor">About</a><a href="#visit">Contact</a><a href="tel:7207752664">Call (720) 775-2664</a>
   </nav></div>
 </header>
 <main id="top">
@@ -988,6 +1004,10 @@ p{margin:0}
   }
   var sc=document.querySelectorAll('.pi-sc');
   if(sc.length&&'IntersectionObserver' in window){var so=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('play',e.isIntersecting);});});[].forEach.call(sc,function(el){so.observe(el);});}
+  var dd=document.getElementById('ddCar');
+  if(dd){var db=dd.querySelector('.dd-btn');db.addEventListener('click',function(){var o=dd.classList.toggle('open');db.setAttribute('aria-expanded',String(o));});
+    document.addEventListener('click',function(e){if(!dd.contains(e.target)){dd.classList.remove('open');db.setAttribute('aria-expanded','false');}});
+    dd.addEventListener('keydown',function(e){if(e.key==='Escape'){dd.classList.remove('open');db.setAttribute('aria-expanded','false');db.focus();}});}
   var tr=document.querySelector('.team-rings');
   if(tr&&'IntersectionObserver' in window){tr.classList.add('paused');new IntersectionObserver(function(es){es.forEach(function(e){tr.classList.toggle('paused',!e.isIntersecting);});}).observe(tr);}
   var ig=document.getElementById('injGrid');
