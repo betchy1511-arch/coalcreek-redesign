@@ -590,6 +590,8 @@ p{margin:0}
 .pi-anim .pi-tile.pi-rv{transition:opacity .8s ease,clip-path 1s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--d,0) * 120ms)}
 .pi-anim .pi-rv img{transform:scale(1.14)}
 .pi-anim .pi-rv.in{opacity:1;transform:none;clip-path:inset(0 0 0 0 round 18px)}
+.pi-anim .pi-rc.pi-rv.in{transition:opacity .8s ease,transform .45s cubic-bezier(.2,.7,.2,1),border-color .3s;transition-delay:0s}
+@media print{.pi-anim .pi-rv{opacity:1!important;transform:none!important;clip-path:none!important;transition:none!important}.pi-anim .pi-rv img{transform:none!important}}
 .pi-anim .pi-rv.in img{transform:none}
 .pi-anim .pi-rv.in:hover img{transform:scale(1.07)}
 .pi-anim .pi-rc.pi-rv.in:hover{transform:translateY(-6px)}
