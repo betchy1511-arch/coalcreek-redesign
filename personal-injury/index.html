@@ -560,29 +560,30 @@ p{margin:0}
 
 /* Personal injury: photo tiles (cases) and photo cards (6 reasons) */
 .pi-scenes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.pi-sc{background:#FFFFFF;border:1px solid #BABBB0;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .3s}
+.pi-sc{background:var(--green);border:0;border-radius:28px 6px 28px 6px;color:#FFFFFF;overflow:hidden;display:flex;flex-direction:column;transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .3s}
 .pi-sc.wide{grid-column:span 2}
-.pi-sc:hover{transform:translateY(-6px);border-color:var(--green)}
-.pi-sc .stage{background:var(--green);height:clamp(170px,15vw,210px);position:relative;overflow:hidden}
-.pi-sc .stage svg{position:absolute;left:12px;top:12px;width:calc(100% - 24px);height:calc(100% - 24px)}
+.pi-sc:hover{transform:translateY(-6px)}
+.pi-sc .stage{background:var(--green);border-bottom:1px solid #BABBB0;margin:0 26px;height:clamp(170px,15vw,210px);position:relative;overflow:hidden}
+.pi-sc .stage svg{position:absolute;left:0;top:14px;width:100%;height:calc(100% - 22px)}
 .pi-sc .bd{padding:22px 26px 26px;display:grid;gap:8px}
-.pi-sc .n{font-size:13px;font-weight:500;letter-spacing:.18em;color:var(--green);display:flex;align-items:center;gap:12px}
-.pi-sc .n::after{content:"";height:2px;width:28px;background:var(--green);transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.pi-sc .n{font-size:13px;font-weight:500;letter-spacing:.18em;color:#FFFFFF;display:flex;align-items:center;gap:12px}
+.pi-sc .n::after{content:"";height:2px;width:28px;background:#FFFFFF;transition:width .5s cubic-bezier(.2,.7,.2,1)}
 .pi-sc:hover .n::after{width:64px}
-.pi-sc h3{font-size:20px}
-.pi-sc p{font-size:16px}
+.pi-sc h3{font-size:20px;color:#FFFFFF}
+.pi-sc p{font-size:16px;color:#FFFFFF}
 .pi-sc .sl{fill:none;stroke:#FFFFFF;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
 .pi-sc .sg{fill:none;stroke:#BABBB0;stroke-width:3;stroke-linecap:round}
 .pi-sc .sg.dash{stroke-dasharray:18 16}
 .pi-sc .sp{fill:#BABBB0}
 .pi-sc .sf{fill:#FFFFFF}
-.pi-sc .sz{fill:none;stroke:#000002;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.pi-sc .sk{fill:none;stroke:#000002;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.pi-sc .sz{fill:none;stroke:#FFFFFF;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
 .pi-sc .burst,.pi-sc .zap1,.pi-sc .zap2,.pi-sc .zap3{opacity:0}
 .pi-sc .fall{transform-box:view-box;transform-origin:160px 166px}
-.pi-sc .lift{transform-box:view-box;transform-origin:160px 166px}
+.pi-sc .lift{transform-box:view-box;transform-origin:140px 118px}
 .pi-sc .ball,.pi-sc .warn{transform-box:view-box}
-.pi-sc .warn{transform-origin:236px 56px}
-.pi-sc .crack{stroke-dasharray:60;stroke-dashoffset:60}
+.pi-sc .warn{transform-origin:86px 60px}
+.pi-sc .crack{stroke-dasharray:90;stroke-dashoffset:90}
 @media (prefers-reduced-motion:no-preference){
   .pi-sc.play .car-a{animation:scA 4.8s cubic-bezier(.5,0,.2,1) infinite}
   .pi-sc.play .car-b{animation:scB 4.8s ease-out infinite}
@@ -601,11 +602,11 @@ p{margin:0}
 @keyframes scBurst{0%,37%{opacity:0;transform:scale(.6)}42%{opacity:1;transform:none}62%,100%{opacity:0}}
 @keyframes scFall{0%,22%{transform:rotate(0)}40%{transform:rotate(-30deg)}52%{transform:rotate(-24deg)}78%,100%{transform:rotate(0)}}
 @keyframes scZap{0%,34%{opacity:0}42%,58%{opacity:1}70%,100%{opacity:0}}
-@keyframes scLift{0%,12%{transform:translateY(16px) scaleY(.9)}46%,70%{transform:none}100%{transform:translateY(16px) scaleY(.9)}}
-@keyframes scZap2{0%,42%{opacity:0}50%,66%{opacity:1}78%,100%{opacity:0}}
+@keyframes scLift{0%,14%{transform:rotate(0)}48%,68%{transform:rotate(-34deg)}100%{transform:rotate(0)}}
+@keyframes scZap2{0%,20%{opacity:0}30%,46%{opacity:1}58%,100%{opacity:0}}
 @keyframes scBall{0%,100%{transform:translateY(0)}50%{transform:translateY(-70px)}}
 @keyframes scZap3{0%,30%{opacity:0}45%,60%{opacity:1}80%,100%{opacity:0}}
-@keyframes scCrack{0%,15%{stroke-dashoffset:60}55%,85%{stroke-dashoffset:0}100%{stroke-dashoffset:60}}
+@keyframes scCrack{0%,15%{stroke-dashoffset:90}55%,85%{stroke-dashoffset:0}100%{stroke-dashoffset:90}}
 @keyframes scWarn{0%,45%{transform:scale(1)}55%{transform:scale(1.14)}65%{transform:scale(1)}72%{transform:scale(1.1)}82%,100%{transform:scale(1)}}
 @media (max-width:1024px){.pi-scenes{grid-template-columns:repeat(2,minmax(0,1fr))}.pi-sc.wide{grid-column:span 2}}
 @media (max-width:600px){.pi-scenes{grid-template-columns:minmax(0,1fr)}.pi-sc.wide{grid-column:auto}}
@@ -613,6 +614,7 @@ p{margin:0}
 .pi-sc .burst{transform-box:view-box;transform-origin:330px 86px}
 .pi-anim .pi-sc.pi-rv.in{transition:opacity .8s ease,transform .45s cubic-bezier(.2,.7,.2,1),border-color .3s;transition-delay:0s}
 .pi-anim .pi-sc.pi-rv.in:hover{transform:translateY(-6px)}
+.pi-anim .pi-sc.pi-rv.in{clip-path:none}
 .pi-rcs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 .pi-rc{position:relative;background:#FFFFFF;border:1px solid #BABBB0;border-radius:18px;overflow:hidden;transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .3s}
 .pi-rc figure{margin:0;position:relative;aspect-ratio:16/10;overflow:hidden}
@@ -843,21 +845,22 @@ p{margin:0}
 <ul class="pi-scenes">
 <li class="pi-sc pi-rv wide" style="--d:0"><div class="stage"><svg viewBox="0 0 560 200" role="img" aria-label="A car rolling into the back of another car" preserveAspectRatio="xMidYMid meet"><path class="sg" d="M0 172 H560"/><path class="sg dash" d="M0 186 H560"/>
 <g transform="translate(330 106)"><g class="sl car-b"><path d="M0 50 L0 36 Q0 29 8 28 L38 25 L62 5 Q66 1 73 1 L121 1 Q129 1 134 7 L151 25 L165 28 Q172 30 172 37 L172 50 M22 50 H0 M50 50 H124 M152 50 H172"/><path d="M69 11 L58 25 H97 V9 H75 Z M105 9 V25 H146 L133 9 Z"/><circle cx="36" cy="51" r="14"/><circle cx="138" cy="51" r="14"/></g></g>
-<g transform="translate(130 106)"><g class="sl car-a"><path d="M0 50 L0 36 Q0 29 8 28 L38 25 L62 5 Q66 1 73 1 L121 1 Q129 1 134 7 L151 25 L165 28 Q172 30 172 37 L172 50 M22 50 H0 M50 50 H124 M152 50 H172"/><path d="M69 11 L58 25 H97 V9 H75 Z M105 9 V25 H146 L133 9 Z"/><circle cx="36" cy="51" r="14"/><circle cx="138" cy="51" r="14"/></g></g>
+<g transform="translate(158 106)"><g class="sl car-a"><path d="M0 50 L0 36 Q0 29 8 28 L38 25 L62 5 Q66 1 73 1 L121 1 Q129 1 134 7 L151 25 L165 28 Q172 30 172 37 L172 50 M22 50 H0 M50 50 H124 M152 50 H172"/><path d="M69 11 L58 25 H97 V9 H75 Z M105 9 V25 H146 L133 9 Z"/><circle cx="36" cy="51" r="14"/><circle cx="138" cy="51" r="14"/></g></g>
 <g class="sz burst"><path d="M318 96 l-10 -16"/><path d="M330 92 v-20"/><path d="M342 96 l10 -16"/></g></svg></div><div class="bd"><span class="n">01</span><h3>Motor Vehicle Accidents</h3><p>Whiplash, neck and back injuries from car, truck and motorcycle collisions.</p></div></li>
 <li class="pi-sc pi-rv" style="--d:1"><div class="stage"><svg viewBox="0 0 320 200" role="img" aria-label="A figure slipping backward beside a puddle" preserveAspectRatio="xMidYMid meet"><path class="sg" d="M40 172 H280"/><ellipse class="sp" cx="176" cy="171" rx="46" ry="5"/>
 <g class="fall"><circle class="sf" cx="160" cy="50" r="12"/><path class="sl" d="M160 64 L160 114 M160 78 L138 96 M160 78 L182 96 M160 114 L146 166 M160 114 L176 166"/></g>
-<g class="sz zap1" transform="translate(200 40) rotate(20) scale(1.3)"><path d="M0 -16 V-5"/><path d="M-13 -10 l8 6"/><path d="M13 -10 l-8 6"/></g></svg></div><div class="bd"><span class="n">02</span><h3>Slip and Fall Accidents</h3><p>Injuries from wet floors, uneven surfaces or unsafe conditions on someone else's property.</p></div></li>
-<li class="pi-sc pi-rv" style="--d:2"><div class="stage"><svg viewBox="0 0 320 200" role="img" aria-label="A worker lifting a heavy box, with a strain at the lower back" preserveAspectRatio="xMidYMid meet"><path class="sg" d="M40 172 H280"/>
-<g class="lift"><circle class="sf" cx="160" cy="44" r="12"/><path class="sl" d="M160 58 L160 112 M160 72 L140 96 M160 72 L180 96 M160 112 L146 166 M160 112 L174 166"/><rect class="sf" x="132" y="88" width="56" height="38" rx="4"/></g>
-<g class="sz zap2" transform="translate(118 104) rotate(-80) scale(1.3)"><path d="M0 -16 V-5"/><path d="M-13 -10 l8 6"/><path d="M13 -10 l-8 6"/></g></svg></div><div class="bd"><span class="n">03</span><h3>Workplace Injuries</h3><p>Strains, falls and impact injuries that happen on the job, often eligible for workers' compensation.</p></div></li>
-<li class="pi-sc pi-rv" style="--d:3"><div class="stage"><svg viewBox="0 0 320 200" role="img" aria-label="A player beside a bouncing ball, with a strain at the knee" preserveAspectRatio="xMidYMid meet"><path class="sg" d="M40 172 H280"/>
-<circle class="sf" cx="140" cy="44" r="12"/><path class="sl" d="M140 58 L140 110 M140 72 L120 92 M140 72 L162 86 M140 110 L126 166 M140 110 L158 136 L150 166"/>
-<g class="ball"><circle class="sl" cx="222" cy="152" r="16"/><path class="sl" style="stroke-width:3" d="M206 152 H238 M222 136 Q232 152 222 168"/></g>
-<g class="sz zap3" transform="translate(176 130) rotate(70) scale(1.3)"><path d="M0 -16 V-5"/><path d="M-13 -10 l8 6"/><path d="M13 -10 l-8 6"/></g></svg></div><div class="bd"><span class="n">04</span><h3>Sports and Recreational Injuries</h3><p>Acute trauma from athletic activities that causes spinal, joint or soft tissue damage.</p></div></li>
-<li class="pi-sc pi-rv" style="--d:4"><div class="stage"><svg viewBox="0 0 320 200" role="img" aria-label="A staircase with a cracked step and a warning sign" preserveAspectRatio="xMidYMid meet"><path class="sl" d="M40 172 H96 V144 H152 V116 H208 V88 H280"/>
-<path class="sz crack" d="M152 116 l10 6 -8 7 11 6 -6 9"/>
-<g class="warn"><path class="sl" style="stroke-width:5" d="M236 22 L270 78 H202 Z"/><path class="sl" style="stroke-width:5" d="M236 40 V58 M236 68 V69"/></g></svg></div><div class="bd"><span class="n">05</span><h3>Premises Liability Injuries</h3><p>Injuries caused by negligent property maintenance or unsafe conditions.</p></div></li>
+<g class="sz zap1" transform="translate(196 44) rotate(20)"><path d="M0 -18 V-6"/><path d="M-14 -11 l8 6"/><path d="M14 -11 l-8 6"/></g></svg></div><div class="bd"><span class="n">02</span><h3>Slip and Fall Accidents</h3><p>Injuries from wet floors, uneven surfaces or unsafe conditions on someone else's property.</p></div></li>
+<li class="pi-sc pi-rv" style="--d:2"><div class="stage"><svg viewBox="0 0 320 200" role="img" aria-label="A worker bending to lift a heavy box, with a strain at the lower back" preserveAspectRatio="xMidYMid meet"><path class="sg" d="M40 172 H280"/>
+<path class="sl" d="M140 118 L136 142 L128 166 M140 118 L152 142 L150 166"/>
+<g class="lift"><circle class="sf" cx="190" cy="72" r="12"/><path class="sl" d="M140 118 L176 86 M174 88 L186 124 M170 92 L178 124"/><rect class="sf" x="166" y="120" width="46" height="32" rx="4"/></g>
+<g class="sz zap2" transform="translate(140 98) rotate(-40)"><path d="M0 -18 V-6"/><path d="M-14 -11 l8 6"/><path d="M14 -11 l-8 6"/></g></svg></div><div class="bd"><span class="n">03</span><h3>Workplace Injuries</h3><p>Strains, falls and impact injuries that happen on the job, often eligible for workers' compensation.</p></div></li>
+<li class="pi-sc pi-rv" style="--d:3"><div class="stage"><svg viewBox="0 0 320 200" role="img" aria-label="A player holding a raised knee beside a bouncing soccer ball" preserveAspectRatio="xMidYMid meet"><path class="sg" d="M40 172 H280"/>
+<circle class="sf" cx="138" cy="46" r="12"/><path class="sl" d="M138 60 L142 108 M142 108 L138 166 M142 108 L172 122 L166 152 M139 74 L168 116 M139 74 L118 98"/>
+<g class="ball"><circle class="sf" cx="232" cy="150" r="17"/><path class="sk" style="fill:#000002;stroke:none" d="M232 143.5 L238.2 148 L235.8 155.3 L228.2 155.3 L225.8 148 Z"/></g>
+<g class="sz zap3" transform="translate(186 118) rotate(70)"><path d="M0 -18 V-6"/><path d="M-14 -11 l8 6"/><path d="M14 -11 l-8 6"/></g></svg></div><div class="bd"><span class="n">04</span><h3>Sports and Recreational Injuries</h3><p>Acute trauma from athletic activities that causes spinal, joint or soft tissue damage.</p></div></li>
+<li class="pi-sc pi-rv" style="--d:4"><div class="stage"><svg viewBox="0 0 320 200" role="img" aria-label="A staircase with a cracking step and a warning sign" preserveAspectRatio="xMidYMid meet"><path class="sl" d="M40 172 H96 V144 H152 V116 H208 V88 H280"/>
+<path class="sk crack" d="M150 116 l16 10 -12 10 16 10 -10 14"/>
+<g class="warn"><path class="sl" style="stroke-width:5" d="M86 26 L120 82 H52 Z"/><path class="sl" style="stroke-width:5" d="M86 44 V62 M86 72 V73"/></g></svg></div><div class="bd"><span class="n">05</span><h3>Premises Liability Injuries</h3><p>Injuries caused by negligent property maintenance or unsafe conditions.</p></div></li>
 </ul></div></section>
 
 <section class="band mist" id="reasons" aria-labelledby="rs-h"><div class="wrap">
