@@ -558,48 +558,8 @@ p{margin:0}
   .head-cta{display:none}
 }
 
-/* Personal injury page: case for chiropractic, cases grid, 6 reasons */
-.pi-ic{width:54px;height:54px;border-radius:50%;background:var(--green);color:#FFFFFF;display:grid;place-items:center;flex:none}
-.pi-ic svg{width:32px;height:32px;stroke-width:2.1}
-.pi-why{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,4.5vw,72px);align-items:center}
-.pi-why-text{display:grid;gap:18px}
-.pi-focus{border-left:4px solid var(--green);padding:4px 0 4px 20px;font-weight:500}
-.pi-compare{display:grid;gap:14px}
-.pi-cmp{display:grid;grid-template-columns:54px minmax(0,1fr);gap:18px;border-radius:18px;padding:clamp(22px,2.4vw,30px)}
-.pi-cmp.er{border:1px solid #BABBB0}
-.pi-cmp.er .pi-ic{background:#FFFFFF;color:#000002;border:1.5px solid #BABBB0}
-.pi-cmp.dc{background:var(--green);color:#FFFFFF}
-.pi-cmp.dc .pi-ic{background:#FFFFFF;color:var(--green)}
-.pi-k{font-size:12.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;margin-bottom:6px}
-.pi-cmp.er .pi-k{color:var(--green)}
-.pi-chips{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
-.pi-chips li{border:1.5px solid #FFFFFF;border-radius:999px;padding:6px 14px;font-size:14.5px;font-weight:500}
-.pi-cases{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.pi-case{border:1px solid #BABBB0;border-radius:18px;padding:clamp(22px,2.4vw,30px);display:grid;gap:10px;align-content:start;transition:border-color .2s,transform .2s}
-.pi-case:hover{border-color:var(--green);transform:translateY(-3px)}
-.pi-case h3{font-size:20px;margin-top:8px}
-.pi-case p{font-size:16px}
-.pi-case.hl{background:var(--green);border-color:var(--green);color:#FFFFFF}
-.pi-case.hl .pi-ic{background:#FFFFFF;color:var(--green)}
-.pi-case.ask{background:#000002;border-color:#000002;color:#FFFFFF;align-content:center}
-.pi-case.ask .btn.line{color:#FFFFFF;border-color:#FFFFFF}
-.pi-case.ask .btn.line:hover{background:#FFFFFF;color:#000002}
-.pi-dark{background:#000002;color:#FFFFFF}
-.pi-dark .eyebrow{color:#BABBB0}
-.pi-dark .head h2::after{background:#BABBB0}
-.pi-dark .inlink{color:#FFFFFF}
-.pi-dark .inlink:hover{color:#BABBB0}
-.pi-dark + #services{padding-top:clamp(56px,7vw,96px)}
-.pi-reasons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.pi-r{border:1px solid #BABBB0;border-radius:18px;padding:clamp(22px,2.4vw,30px);display:grid;gap:10px;align-content:start}
-.pi-r-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-.pi-n{font-size:44px;line-height:1;font-weight:500;color:#BABBB0}
-.pi-r h3{font-size:20px}
-.pi-r p{font-size:16px;color:#FFFFFF}
-@media (max-width:1024px){.pi-cases,.pi-reasons{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:860px){.pi-why{grid-template-columns:minmax(0,1fr)}}
-@media (max-width:600px){.pi-cases,.pi-reasons{grid-template-columns:minmax(0,1fr)}}
-@media (prefers-reduced-motion:reduce){.pi-case{transition:none}.pi-case:hover{transform:none}}
+/* Personal injury reasons grid: homepage injuries grid with line icons */
+.pi-inj .pi-li{width:44px;height:44px;color:var(--green);margin-bottom:14px;display:block}
 
 /* ---------- Inner pages ---------- */
 .pb{border-bottom:1px solid #BABBB0;overflow:hidden}
@@ -779,7 +739,7 @@ p{margin:0}
 <section class="pb" aria-labelledby="pb-h"><div class="wrap">
 <div><nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="../">Home</a></li><li aria-current="page">Car Accident Care</li></ol></nav>
 <p class="eyebrow">Auto accident care</p><h1 id="pb-h">What Chiropractic Care Looks Like After a <em>Car Accident</em> in Lafayette, CO</h1><p class="sub">Been in an accident? Here's exactly what happens when you come to Coal Creek, from your first visit through a full recovery.</p>
-<div class="btns"><a class="btn fill" href="https://coalcreekchiro.janeapp.com" target="_blank" rel="noopener">Book an Appointment</a><a class="btn line" href="tel:7207752664">Call (720) 775-2664</a></div><ul class="pb-facts"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.2l2.7 2.7L16.2 9.4"/></svg><span>Symptoms often show 24 to 72 hours later</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.2l2.7 2.7L16.2 9.4"/></svg><span>Same-day appointments available</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.2l2.7 2.7L16.2 9.4"/></svg><span>Auto insurance accepted</span></li></ul></div>
+<div class="btns"><a class="btn fill" href="https://coalcreekchiro.janeapp.com" target="_blank" rel="noopener">Book an Appointment</a><a class="btn line" href="tel:7207752664">Call (720) 775-2664</a></div></div>
 <div class="pb-art"><svg viewBox="0 0 560 460" role="img" aria-labelledby="art-t"><title id="art-t">Drawing of a rear-end collision, followed by a timeline: the impact, symptoms in 24 to 72 hours, then the first visit</title>
 <circle class="gr" cx="500" cy="60" r="150"/><circle class="gr" cx="500" cy="60" r="110"/><circle class="gr" cx="500" cy="60" r="70"/>
 <path class="ln" d="M30 262 H530"/><path class="gd road-dash" d="M30 292 H530" style="stroke-dashoffset:0"/>
