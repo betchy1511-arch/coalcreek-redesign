@@ -558,6 +558,49 @@ p{margin:0}
   .head-cta{display:none}
 }
 
+/* Personal injury page: case for chiropractic, cases grid, 6 reasons */
+.pi-ic{width:48px;height:48px;border-radius:50%;background:var(--green);color:#FFFFFF;display:grid;place-items:center;flex:none}
+.pi-ic svg{width:24px;height:24px}
+.pi-why{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,4.5vw,72px);align-items:center}
+.pi-why-text{display:grid;gap:18px}
+.pi-focus{border-left:4px solid var(--green);padding:4px 0 4px 20px;font-weight:500}
+.pi-compare{display:grid;gap:14px}
+.pi-cmp{display:grid;grid-template-columns:48px minmax(0,1fr);gap:18px;border-radius:18px;padding:clamp(22px,2.4vw,30px)}
+.pi-cmp.er{border:1px solid #BABBB0}
+.pi-cmp.er .pi-ic{background:#FFFFFF;color:#000002;border:1.5px solid #BABBB0}
+.pi-cmp.dc{background:var(--green);color:#FFFFFF}
+.pi-cmp.dc .pi-ic{background:#FFFFFF;color:var(--green)}
+.pi-k{font-size:12.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;margin-bottom:6px}
+.pi-cmp.er .pi-k{color:var(--green)}
+.pi-chips{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.pi-chips li{border:1.5px solid #FFFFFF;border-radius:999px;padding:6px 14px;font-size:14.5px;font-weight:500}
+.pi-cases{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.pi-case{border:1px solid #BABBB0;border-radius:18px;padding:clamp(22px,2.4vw,30px);display:grid;gap:10px;align-content:start;transition:border-color .2s,transform .2s}
+.pi-case:hover{border-color:var(--green);transform:translateY(-3px)}
+.pi-case h3{font-size:20px;margin-top:8px}
+.pi-case p{font-size:16px}
+.pi-case.hl{background:var(--green);border-color:var(--green);color:#FFFFFF}
+.pi-case.hl .pi-ic{background:#FFFFFF;color:var(--green)}
+.pi-case.ask{background:#000002;border-color:#000002;color:#FFFFFF;align-content:center}
+.pi-case.ask .btn.line{color:#FFFFFF;border-color:#FFFFFF}
+.pi-case.ask .btn.line:hover{background:#FFFFFF;color:#000002}
+.pi-dark{background:#000002;color:#FFFFFF}
+.pi-dark .eyebrow{color:#BABBB0}
+.pi-dark .head h2::after{background:#BABBB0}
+.pi-dark .inlink{color:#FFFFFF}
+.pi-dark .inlink:hover{color:#BABBB0}
+.pi-dark + #services{padding-top:clamp(56px,7vw,96px)}
+.pi-reasons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.pi-r{border:1px solid #BABBB0;border-radius:18px;padding:clamp(22px,2.4vw,30px);display:grid;gap:10px;align-content:start}
+.pi-r-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.pi-n{font-size:44px;line-height:1;font-weight:500;color:#BABBB0}
+.pi-r h3{font-size:20px}
+.pi-r p{font-size:16px;color:#FFFFFF}
+@media (max-width:1024px){.pi-cases,.pi-reasons{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:860px){.pi-why{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:600px){.pi-cases,.pi-reasons{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){.pi-case{transition:none}.pi-case:hover{transform:none}}
+
 /* ---------- Inner pages ---------- */
 .pb{border-bottom:1px solid #BABBB0;overflow:hidden}
 .pb .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,4vw,64px);align-items:center;padding-block:clamp(36px,4.5vw,64px)}
@@ -735,7 +778,7 @@ p{margin:0}
 <main id="top">
 <section class="pb" aria-labelledby="pb-h"><div class="wrap">
 <div><nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="../">Home</a></li><li><a href="../auto-accident-care/">Car Accident Care</a></li><li aria-current="page">Personal Injury</li></ol></nav>
-<p class="eyebrow">Personal injury care</p><h1 id="pb-h">Why You Need Chiropractic Care After a <em>Personal Injury</em> in Colorado</h1><p class="sub">After any accident or injury, getting evaluated by a chiropractor is one of the most important steps you can take for your health, your recovery and your legal case.</p>
+<p class="eyebrow">Personal injury care</p><h1 id="pb-h">Why You Need <span class="h1-ul"><em>Chiropractic Care</em></span> After a Personal Injury in Colorado</h1><p class="sub">After any accident or injury, getting evaluated by a chiropractor is one of the most important steps you can take for your health, your recovery and your legal case.</p>
 <div class="btns"><a class="btn fill" href="https://coalcreekchiro.janeapp.com" target="_blank" rel="noopener">Book an Appointment</a><a class="btn line" href="tel:7207752664">Call (720) 775-2664</a></div><ul class="pb-facts"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.2l2.7 2.7L16.2 9.4"/></svg><span>Car, slip and fall, and workplace injuries</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.2l2.7 2.7L16.2 9.4"/></svg><span>Records ready for your attorney</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.2l2.7 2.7L16.2 9.4"/></svg><span>Same-day appointments</span></li></ul></div>
 <div class="pb-art"><svg viewBox="0 0 560 460" role="img" aria-labelledby="art-t"><title id="art-t">Three kinds of personal injury: a slip and fall, a workplace lifting injury and a motor vehicle accident</title>
 <circle class="gr" cx="520" cy="440" r="150"/><circle class="gr" cx="520" cy="440" r="110"/>
@@ -749,31 +792,37 @@ p{margin:0}
 
 <section class="band" id="why" aria-labelledby="wy-h"><div class="wrap">
 <div class="head"><p class="eyebrow">Why chiropractic</p><h2 id="wy-h"><span class="ht">The Case for <em>Chiropractic</em> After a Personal Injury</span></h2></div>
-<div class="cols2"><p class="lead-p">When you're involved in a personal injury incident, such as a car accident, a slip and fall or a workplace injury, your body absorbs a significant amount of force in a very short time.</p>
-<div class="prose"><p>Even when you feel "okay" in the immediate aftermath, the structural damage to your spine, joints and soft tissues may be significant.</p>
-<p>Chiropractic care is well positioned to identify and treat these injuries. Unlike emergency rooms that focus on ruling out life-threatening conditions, chiropractors specifically evaluate the musculoskeletal system for the kinds of injuries that commonly result from accidents: joint dysfunctions, disc injuries, whiplash and soft tissue damage.</p>
-<p>Coal Creek Chiropractic focuses on personal injury and auto accident cases. We understand the medical, legal and insurance sides of your situation, and we're here to make your recovery as smooth as possible.</p></div></div>
+<div class="pi-why"><div class="pi-why-text">
+<p class="lead-p">When you're involved in a personal injury incident, such as a car accident, a slip and fall or a workplace injury, your body absorbs a significant amount of force in a very short time.</p>
+<p>Even when you feel "okay" in the immediate aftermath, the structural damage to your spine, joints and soft tissues may be significant.</p>
+<p class="pi-focus">Coal Creek Chiropractic focuses on personal injury and auto accident cases. We understand the medical, legal and insurance sides of your situation, and we're here to make your recovery as smooth as possible.</p></div>
+<div class="pi-compare">
+<div class="pi-cmp er"><span class="pi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M12 8v8M8 12h8"/></svg></span><div><p class="pi-k">Emergency room</p><p>Focuses on ruling out life-threatening conditions.</p></div></div>
+<div class="pi-cmp dc"><span class="pi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18"/><path d="M9 5h6M8.5 9h7M8 13h8M8.5 17h7"/></svg></span><div><p class="pi-k">Chiropractic evaluation</p><p>Chiropractic care is well positioned to identify and treat these injuries. Chiropractors specifically evaluate the musculoskeletal system for the kinds of injuries that commonly result from accidents:</p>
+<ul class="pi-chips"><li>Joint dysfunctions</li><li>Disc injuries</li><li>Whiplash</li><li>Soft tissue damage</li></ul></div></div>
+</div></div>
 </div></section>
 
-<section class="band mist" id="cases" aria-labelledby="cs-h" style="padding-top:0"><div class="wrap">
+<section class="band" id="cases" aria-labelledby="cs-h" style="padding-top:0"><div class="wrap">
 <div class="head"><p class="eyebrow">What we treat</p><h2 id="cs-h"><span class="ht">Personal Injury Cases <em>We See</em></span></h2></div>
-<ul class="cases">
-<li><b>Slip and fall accidents</b><span>Injuries from wet floors, uneven surfaces or unsafe conditions on someone else's property.</span></li>
-<li><b>Workplace injuries</b><span>Strains, falls and impact injuries that happen on the job, often eligible for workers' compensation.</span></li>
-<li><b>Sports and recreational injuries</b><span>Acute trauma from athletic activities that causes spinal, joint or soft tissue damage.</span></li>
-<li><b>Motor vehicle accidents</b><span>Whiplash, neck and back injuries from car, truck and motorcycle collisions.</span></li>
-<li><b>Premises liability injuries</b><span>Injuries caused by negligent property maintenance or unsafe conditions.</span></li>
+<ul class="pi-cases">
+<li class="pi-case"><span class="pi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="4.5" r="1.8"/><path d="M10 7l3 4 4-1"/><path d="M12.5 10.5 9 15l-4 1"/><path d="M9 15l3 5"/><path d="M3 21h18"/></svg></span><h3>Slip and fall accidents</h3><p>Injuries from wet floors, uneven surfaces or unsafe conditions on someone else's property.</p></li>
+<li class="pi-case"><span class="pi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18h18"/><path d="M5 18a7 7 0 0 1 14 0"/><path d="M10 11V6h4v5"/></svg></span><h3>Workplace injuries</h3><p>Strains, falls and impact injuries that happen on the job, often eligible for workers' compensation.</p></li>
+<li class="pi-case"><span class="pi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a14 14 0 0 1 0 18M3 12h18"/></svg></span><h3>Sports and recreational injuries</h3><p>Acute trauma from athletic activities that causes spinal, joint or soft tissue damage.</p></li>
+<li class="pi-case hl"><span class="pi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 16V11l2-5h10l2 5v5"/><path d="M3 16h18v3H3z"/><circle cx="7.5" cy="13" r="1"/><circle cx="16.5" cy="13" r="1"/></svg></span><h3>Motor vehicle accidents</h3><p>Whiplash, neck and back injuries from car, truck and motorcycle collisions.</p></li>
+<li class="pi-case"><span class="pi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V9l8-5 8 5v12"/><path d="M12 11v4"/><path d="M12 18h.01"/></svg></span><h3>Premises liability injuries</h3><p>Injuries caused by negligent property maintenance or unsafe conditions.</p></li>
+<li class="pi-case ask"><h3>Not sure where your injury fits?</h3><p>Call the office and ask.</p><div class="btns"><a class="btn line" href="tel:7207752664">Call (720) 775-2664</a></div></li>
 </ul></div></section>
 
-<section class="band" id="reasons" aria-labelledby="rs-h" style="padding-top:0"><div class="wrap">
+<section class="band on-dark pi-dark" id="reasons" aria-labelledby="rs-h"><div class="wrap">
 <div class="head"><p class="eyebrow">Why it matters</p><h2 id="rs-h"><span class="ht">6 Reasons <em>Chiropractic Care</em> Is Essential After an Injury</span></h2></div>
-<div class="bars">
-<article><h3>Injuries Aren't Always Obvious</h3><p>Soft tissue injuries, whiplash and spinal joint dysfunctions often don't cause immediate pain. Symptoms can appear days or even weeks after an incident, which makes prompt evaluation critical.</p></article>
-<article><h3>Protect Your Legal Rights</h3><p>Prompt chiropractic care creates a documented medical record of your injuries. This documentation is often essential for personal injury claims and insurance negotiations.</p></article>
-<article><h3>Natural, Drug-Free Recovery</h3><p>Chiropractic care addresses the root cause of pain, not just the symptoms. Spinal adjustments, soft tissue therapy and rehabilitation help your body heal without relying on pain medication.</p></article>
-<article><h3>Prevent Chronic Pain</h3><p>Untreated personal injury can develop into chronic conditions over time. Early chiropractic care can keep short-term injuries from becoming long-term problems.</p></article>
-<article><h3>We Work With Your Attorney</h3><p>Dr. Johnston coordinates directly with personal injury attorneys so your medical records, treatment notes and billing are organized and ready to support your case. See <a class="inlink" href="https://coalcreekchiro.com/expert-witness">chiropractic expert witness support in Lafayette</a>.</p></article>
-<article><h3>Same-Day Appointments</h3><p>The sooner treatment begins, the better your recovery and the stronger your case documentation. Personal injury patients are seen as quickly as possible.</p></article>
+<div class="pi-reasons">
+<article class="pi-r"><div class="pi-r-top"><span class="pi-n" aria-hidden="true">01</span><span class="pi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><circle cx="12" cy="12" r="2.5"/></svg></span></div><h3>Injuries Aren't Always Obvious</h3><p>Soft tissue injuries, whiplash and spinal joint dysfunctions often don't cause immediate pain. Symptoms can appear days or even weeks after an incident, which makes prompt evaluation critical.</p></article>
+<article class="pi-r"><div class="pi-r-top"><span class="pi-n" aria-hidden="true">02</span><span class="pi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 13h5M10 17h5"/></svg></span></div><h3>Protect Your Legal Rights</h3><p>Prompt chiropractic care creates a documented medical record of your injuries. This documentation is often essential for personal injury claims and insurance negotiations.</p></article>
+<article class="pi-r"><div class="pi-r-top"><span class="pi-n" aria-hidden="true">03</span><span class="pi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-9 6-14 14-14 0 8-5 14-14 14z"/><path d="M5 19l8-8"/></svg></span></div><h3>Natural, Drug-Free Recovery</h3><p>Chiropractic care addresses the root cause of pain, not just the symptoms. Spinal adjustments, soft tissue therapy and rehabilitation help your body heal without relying on pain medication.</p></article>
+<article class="pi-r"><div class="pi-r-top"><span class="pi-n" aria-hidden="true">04</span><span class="pi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span></div><h3>Prevent Chronic Pain</h3><p>Untreated personal injury can develop into chronic conditions over time. Early chiropractic care can keep short-term injuries from becoming long-term problems.</p></article>
+<article class="pi-r"><div class="pi-r-top"><span class="pi-n" aria-hidden="true">05</span><span class="pi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5h6v2"/><path d="M3 13h18"/></svg></span></div><h3>We Work With Your Attorney</h3><p>Dr. Johnston coordinates directly with personal injury attorneys so your medical records, treatment notes and billing are organized and ready to support your case. See <a class="inlink" href="https://coalcreekchiro.com/expert-witness">chiropractic expert witness support in Lafayette</a>.</p></article>
+<article class="pi-r"><div class="pi-r-top"><span class="pi-n" aria-hidden="true">06</span><span class="pi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span></div><h3>Same-Day Appointments</h3><p>The sooner treatment begins, the better your recovery and the stronger your case documentation. Personal injury patients are seen as quickly as possible.</p></article>
 </div></div></section>
 <section class="band" id="services" aria-labelledby="svc-h">
   <div class="wrap">

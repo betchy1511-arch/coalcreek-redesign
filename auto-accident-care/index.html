@@ -558,6 +558,49 @@ p{margin:0}
   .head-cta{display:none}
 }
 
+/* Personal injury page: case for chiropractic, cases grid, 6 reasons */
+.pi-ic{width:48px;height:48px;border-radius:50%;background:var(--green);color:#FFFFFF;display:grid;place-items:center;flex:none}
+.pi-ic svg{width:24px;height:24px}
+.pi-why{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,4.5vw,72px);align-items:center}
+.pi-why-text{display:grid;gap:18px}
+.pi-focus{border-left:4px solid var(--green);padding:4px 0 4px 20px;font-weight:500}
+.pi-compare{display:grid;gap:14px}
+.pi-cmp{display:grid;grid-template-columns:48px minmax(0,1fr);gap:18px;border-radius:18px;padding:clamp(22px,2.4vw,30px)}
+.pi-cmp.er{border:1px solid #BABBB0}
+.pi-cmp.er .pi-ic{background:#FFFFFF;color:#000002;border:1.5px solid #BABBB0}
+.pi-cmp.dc{background:var(--green);color:#FFFFFF}
+.pi-cmp.dc .pi-ic{background:#FFFFFF;color:var(--green)}
+.pi-k{font-size:12.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;margin-bottom:6px}
+.pi-cmp.er .pi-k{color:var(--green)}
+.pi-chips{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.pi-chips li{border:1.5px solid #FFFFFF;border-radius:999px;padding:6px 14px;font-size:14.5px;font-weight:500}
+.pi-cases{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.pi-case{border:1px solid #BABBB0;border-radius:18px;padding:clamp(22px,2.4vw,30px);display:grid;gap:10px;align-content:start;transition:border-color .2s,transform .2s}
+.pi-case:hover{border-color:var(--green);transform:translateY(-3px)}
+.pi-case h3{font-size:20px;margin-top:8px}
+.pi-case p{font-size:16px}
+.pi-case.hl{background:var(--green);border-color:var(--green);color:#FFFFFF}
+.pi-case.hl .pi-ic{background:#FFFFFF;color:var(--green)}
+.pi-case.ask{background:#000002;border-color:#000002;color:#FFFFFF;align-content:center}
+.pi-case.ask .btn.line{color:#FFFFFF;border-color:#FFFFFF}
+.pi-case.ask .btn.line:hover{background:#FFFFFF;color:#000002}
+.pi-dark{background:#000002;color:#FFFFFF}
+.pi-dark .eyebrow{color:#BABBB0}
+.pi-dark .head h2::after{background:#BABBB0}
+.pi-dark .inlink{color:#FFFFFF}
+.pi-dark .inlink:hover{color:#BABBB0}
+.pi-dark + #services{padding-top:clamp(56px,7vw,96px)}
+.pi-reasons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.pi-r{border:1px solid #BABBB0;border-radius:18px;padding:clamp(22px,2.4vw,30px);display:grid;gap:10px;align-content:start}
+.pi-r-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.pi-n{font-size:44px;line-height:1;font-weight:500;color:#BABBB0}
+.pi-r h3{font-size:20px}
+.pi-r p{font-size:16px;color:#FFFFFF}
+@media (max-width:1024px){.pi-cases,.pi-reasons{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:860px){.pi-why{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:600px){.pi-cases,.pi-reasons{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){.pi-case{transition:none}.pi-case:hover{transform:none}}
+
 /* ---------- Inner pages ---------- */
 .pb{border-bottom:1px solid #BABBB0;overflow:hidden}
 .pb .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,4vw,64px);align-items:center;padding-block:clamp(36px,4.5vw,64px)}
