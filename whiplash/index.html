@@ -632,24 +632,44 @@ p{margin:0}
 @media (max-width:600px){.pi-scenes{grid-template-columns:minmax(0,1fr);grid-auto-rows:auto}.pi-sc,.pi-sc:nth-child(4),.pi-sc:nth-child(5){grid-column:auto}}
 @media (prefers-reduced-motion:reduce){.pi-sc{transition:none}.pi-sc:hover{transform:none}.pi-sc .burst,.pi-sc .zap1,.pi-sc .zap2,.pi-sc .zap3{opacity:1}.pi-sc .crack{stroke-dashoffset:0}}
 .pi-sc .burst{transform-box:view-box;transform-origin:330px 86px}
+/* Symptom cards carry the homepage injury icons: white figure, black pain marks */
+.pi-sc .stage .sym-ic{position:absolute;left:50%;top:50%;width:120px;height:120px;transform:translate(-50%,-50%);overflow:visible}
+.pi-sc .sym-ic path,.pi-sc .sym-ic .hd{stroke:#FFFFFF;stroke-width:8.5;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.pi-sc .sym-ic .hd{fill:#FFFFFF;stroke-width:0}
+.pi-sc .sym-ic .zap path{stroke:#000002;stroke-width:2.6}
+.pi-sc .sym-ic .zap,.pi-sc .sym-ic .swing{transform-box:fill-box;transform-origin:center}
+.pi-sc .sym-ic .swing{transform-box:view-box;transform-origin:40px 27px}
+.pi-sc .sym-ic .slump{transform-box:view-box;transform-origin:40px 52px}
+@media (prefers-reduced-motion:no-preference){
+  .pi-scenes.anim .sym-ic{opacity:0;transform:translate(calc(-50% + var(--fx,90px)),calc(-50% - 60px)) rotate(10deg)}
+  .pi-scenes.anim.in .sym-ic{animation:sym-in 1s cubic-bezier(.3,.7,.3,1) both;animation-delay:calc(var(--k,0)*.2s)}
+  .pi-scenes.anim .zap{opacity:0}
+  .pi-scenes.anim.in .zap{animation:ij-zap 1.1s ease-in-out 3 both;animation-delay:calc(var(--k,0)*.2s + .9s)}
+  .pi-scenes.anim.in .swing{animation:ij-swing 1.1s ease-in-out 3 both;animation-delay:calc(var(--k,0)*.2s + .9s)}
+  .pi-scenes.anim.in .slump{animation:sym-slump 1.1s ease-in-out 3 both;animation-delay:calc(var(--k,0)*.2s + .9s)}
+  .pi-scenes.anim.in.done > li:hover .zap{animation:ij-zap .9s ease-in-out infinite}
+  .pi-scenes.anim.in.done > li:hover .swing{animation:ij-swing .9s ease-in-out infinite}
+  .pi-scenes.anim.in.done > li:hover .slump{animation:sym-slump .9s ease-in-out infinite}
+}
+@keyframes sym-in{from{opacity:0;transform:translate(calc(-50% + var(--fx,90px)),calc(-50% - 60px)) rotate(10deg)}70%{opacity:1}to{opacity:1;transform:translate(-50%,-50%)}}
+@keyframes sym-slump{0%,100%{transform:rotate(0)}50%{transform:rotate(-6deg)}}
+@media (max-width:760px){.pi-scenes{--fx:40px}}
+@media print{.pi-scenes.anim .sym-ic,.pi-scenes.anim .zap{opacity:1!important;transform:translate(-50%,-50%)!important;animation:none!important}}
 /* Six symptom scene cards (whiplash): a plain 3 x 2 grid of equal cards */
 .pi-scenes.six .pi-sc,.pi-scenes.six .pi-sc:nth-child(4),.pi-scenes.six .pi-sc:nth-child(5){grid-column:span 2}
 @media (max-width:1024px){.pi-scenes.six .pi-sc,.pi-scenes.six .pi-sc:nth-child(5){grid-column:span 2}}
 @media (max-width:600px){.pi-scenes.six .pi-sc,.pi-scenes.six .pi-sc:nth-child(4),.pi-scenes.six .pi-sc:nth-child(5){grid-column:auto}}
 .pi-sc .wz{opacity:0}
-.pi-sc .wh-neck{transform-box:view-box;transform-origin:170px 92px}
-.pi-sc .wh-ring{transform-box:view-box;transform-origin:150px 104px;opacity:0}
-.pi-sc .wh-shoulder{transform-box:view-box;transform-origin:160px 86px}
+.pi-sc .wh-neck,.pi-sc .wh-ring,.pi-sc .wh-shoulder,.pi-sc .wh-jaw,.pi-sc .wh-sway,.pi-sc .wh-orb,.pi-sc .wh-grip{transform-box:view-box}
+.pi-sc .wh-ring{opacity:0}
 .pi-sc .wh-dot{opacity:0}
-.pi-sc .wh-jaw{transform-box:view-box;transform-origin:150px 94px}
-.pi-sc .wh-sway{transform-box:view-box;transform-origin:160px 172px}
-.pi-sc .wh-orb{transform-box:view-box;transform-origin:160px 54px}
 @media (prefers-reduced-motion:no-preference){
   .pi-sc.play .wh-neck{animation:whNeck 3.6s cubic-bezier(.45,0,.55,1) infinite}
   .pi-sc.play .wh-ring{animation:whRing 2.4s ease-out infinite}
   .pi-sc.play .wh-ring.r2{animation-delay:.8s}
   .pi-sc.play .wh-ring.r3{animation-delay:1.6s}
   .pi-sc.play .wh-shoulder{animation:whShoulder 3.2s cubic-bezier(.45,0,.55,1) infinite}
+  .pi-sc.play .wh-grip{animation:whGrip 3.2s cubic-bezier(.45,0,.55,1) infinite}
   .pi-sc.play .wh-dot{animation:whDot 2.4s ease-in-out infinite}
   .pi-sc.play .wh-dot.d2{animation-delay:.4s}
   .pi-sc.play .wh-dot.d3{animation-delay:.8s}
@@ -661,12 +681,13 @@ p{margin:0}
   .pi-sc.play .wz.z2{animation-delay:.5s}
 }
 @keyframes whNeck{0%,18%{transform:rotate(0)}40%{transform:rotate(14deg)}56%{transform:rotate(10deg)}80%,100%{transform:rotate(0)}}
-@keyframes whRing{0%{transform:scale(.3);opacity:0}12%{opacity:.9}100%{transform:scale(1.6);opacity:0}}
+@keyframes whRing{0%{transform:scale(.55);opacity:0}15%{opacity:1}100%{transform:scale(1.25);opacity:0}}
 @keyframes whShoulder{0%,20%{transform:rotate(0)}42%{transform:rotate(9deg)}58%{transform:rotate(7deg)}84%,100%{transform:rotate(0)}}
-@keyframes whDot{0%{transform:translate(0,0);opacity:0}15%{opacity:1}70%{opacity:1}100%{transform:translate(62px,52px);opacity:0}}
+@keyframes whDot{0%{transform:translate(0,0);opacity:0}15%{opacity:1}70%{opacity:1}100%{transform:translate(14px,48px);opacity:0}}
 @keyframes whJaw{0%,20%{transform:rotate(0)}38%{transform:rotate(16deg)}50%{transform:rotate(12deg)}70%,100%{transform:rotate(0)}}
-@keyframes whSway{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+@keyframes whSway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
 @keyframes whOrb{to{transform:rotate(360deg)}}
+@keyframes whGrip{0%,20%{transform:scale(1)}42%{transform:scale(.88)}58%{transform:scale(.92)}84%,100%{transform:scale(1)}}
 @media (prefers-reduced-motion:reduce){.pi-sc .wz,.pi-sc .wh-dot{opacity:1}.pi-sc .wh-ring{opacity:.6}}
 
 .pi-anim .pi-sc.pi-rv.in{transition:opacity .8s ease,transform .45s cubic-bezier(.2,.7,.2,1),border-color .3s;transition-delay:0s}
@@ -904,13 +925,13 @@ p{margin:0}
 
 <section class="band mist" id="symptoms" aria-labelledby="sy-h" style="padding-top:0"><div class="wrap">
 <div class="head"><p class="eyebrow">Symptoms</p><h2 id="sy-h"><span class="ht">Common Whiplash <em>Symptoms</em></span></h2></div>
-<ul class="pi-scenes six">
-<li class="pi-sc pi-rv" style="--d:0"><div class="stage"><svg viewBox="0 0 320 200" role="img" aria-label="A figure holding the back of a stiff neck" preserveAspectRatio="xMidYMid meet"><path class="sg" d="M40 172 H280"/><path class="sl" d="M160 110 L160 172 M160 172 L138 172 M160 172 L182 172"/><g class="wh-neck"><circle class="sf" cx="170" cy="62" r="13"/><path class="sl" d="M166 76 L160 110 M160 92 L190 96 L178 80"/></g><g class="sz wz" transform="translate(206 84) rotate(30)"><path d="M0 -18 V-6"/><path d="M-14 -11 l8 6"/><path d="M14 -11 l-8 6"/></g></svg></div><div class="bd"><span class="n">01</span><h3>Neck pain and stiffness</h3><p>Often the first symptom: aching or sharp pain with movement that worsens over the first 2 to 3 days.</p></div></li>
-<li class="pi-sc pi-rv" style="--d:1"><div class="stage"><svg viewBox="0 0 320 200" role="img" aria-label="A head with pain rings pulsing from the base of the skull" preserveAspectRatio="xMidYMid meet"><path class="sg" d="M40 172 H280"/><circle class="wh-ring" cx="150" cy="104" r="34" fill="none" stroke="#FFFFFF" stroke-width="3"/><circle class="wh-ring r2" cx="150" cy="104" r="34" fill="none" stroke="#FFFFFF" stroke-width="3"/><circle class="wh-ring r3" cx="150" cy="104" r="34" fill="none" stroke="#FFFFFF" stroke-width="3"/><path class="sl" d="M126 118 Q124 68 160 62 Q196 62 196 98 Q196 118 184 124 L186 150 L138 150 L136 128 Q128 126 126 118 Z"/><path class="sl" d="M138 150 L138 172 M186 150 L186 172"/></svg></div><div class="bd"><span class="n">02</span><h3>Headaches</h3><p>Typically starting at the base of the skull and radiating forward, caused by injured upper cervical joints.</p></div></li>
-<li class="pi-sc pi-rv" style="--d:2"><div class="stage"><svg viewBox="0 0 320 200" role="img" aria-label="A figure gripping a sore shoulder" preserveAspectRatio="xMidYMid meet"><path class="sg" d="M40 172 H280"/><path class="sl" d="M160 100 L160 172 M160 172 L142 172 M160 172 L178 172"/><circle class="sf" cx="160" cy="54" r="13"/><g class="wh-shoulder"><path class="sl" d="M160 100 L126 86 L96 104"/></g><path class="sl" d="M160 100 L194 86 L174 70 L140 90"/><g class="sz wz" transform="translate(112 66) rotate(-20)"><path d="M0 -18 V-6"/><path d="M-14 -11 l8 6"/><path d="M14 -11 l-8 6"/></g></svg></div><div class="bd"><span class="n">03</span><h3>Shoulder pain</h3><p>Muscle tension and referred pain from the neck frequently extend into the shoulders and upper back.</p></div></li>
-<li class="pi-sc pi-rv" style="--d:3"><div class="stage"><svg viewBox="0 0 320 200" role="img" aria-label="A figure with tingling running down one arm" preserveAspectRatio="xMidYMid meet"><path class="sg" d="M40 172 H280"/><path class="sl" d="M136 100 L136 172 M136 172 L120 172 M136 172 L152 172"/><circle class="sf" cx="136" cy="54" r="13"/><path class="sl" d="M136 100 L108 118 M136 100 L166 112 L228 164"/><circle class="sf wh-dot" cx="164" cy="112" r="4"/><circle class="sf wh-dot d2" cx="164" cy="112" r="4"/><circle class="sf wh-dot d3" cx="164" cy="112" r="4"/><circle class="sf wh-dot d4" cx="164" cy="112" r="4"/><g class="sz wz z2" transform="translate(244 160)"><path d="M0 -18 V-6"/><path d="M-14 -11 l8 6"/><path d="M14 -11 l-8 6"/></g></svg></div><div class="bd"><span class="n">04</span><h3>Arm numbness or tingling</h3><p>Nerve compression or irritation from spinal joint dysfunction can cause radiating symptoms into the arms.</p></div></li>
-<li class="pi-sc pi-rv" style="--d:4"><div class="stage"><svg viewBox="0 0 320 200" role="img" aria-label="A head in profile with a sore jaw joint" preserveAspectRatio="xMidYMid meet"><path class="sg" d="M40 172 H280"/><path class="sl" d="M120 120 Q112 60 166 54 Q206 54 204 94 L198 112"/><path class="sl" d="M120 120 L128 150 L176 150 L176 172 M128 150 L128 172"/><g class="wh-jaw"><path class="sl" d="M150 94 L190 110 L186 124 L156 126"/></g><circle class="sf" cx="150" cy="94" r="6"/><g class="sz wz" transform="translate(222 120) rotate(40)"><path d="M0 -18 V-6"/><path d="M-14 -11 l8 6"/><path d="M14 -11 l-8 6"/></g></svg></div><div class="bd"><span class="n">05</span><h3>Jaw pain (TMJ)</h3><p>The force of impact can affect the temporomandibular joint, causing jaw pain, clicking or difficulty chewing.</p></div></li>
-<li class="pi-sc pi-rv" style="--d:5"><div class="stage"><svg viewBox="0 0 320 200" role="img" aria-label="A swaying figure with circles orbiting the head" preserveAspectRatio="xMidYMid meet"><path class="sg" d="M40 172 H280"/><g class="wh-sway"><circle class="sf" cx="160" cy="54" r="13"/><path class="sl" d="M160 68 L160 118 M160 86 L132 104 M160 86 L188 104 M160 118 L144 172 M160 118 L176 172"/><g class="wh-orb"><circle class="sf" cx="128" cy="54" r="4"/><circle class="sf" cx="192" cy="54" r="4"/><circle class="sf" cx="160" cy="22" r="4"/></g></g></svg></div><div class="bd"><span class="n">06</span><h3>Dizziness and fatigue</h3><p>Disruption to the neck's sense of position and to blood flow can cause lightheadedness and exhaustion.</p></div></li>
+<ul class="pi-scenes six" id="injGrid">
+<li class="pi-sc pi-rv" style="--d:0"><div class="stage"><svg class="sym-ic" viewBox="0 0 80 80" aria-hidden="true" focusable="false"><g class="swing"><circle cx="40" cy="14" r="9.5" class="hd"/></g><path d="M40 28 L40 52 M40 34 L27 47 M40 34 L53 47"/><path d="M40 52 L33 76 M40 52 L47 76"/><g transform="translate(56 22) rotate(70) scale(1.25)"><g class="zap"><path d="M-7 -6 l3 4 -3 3 3 4"/><path d="M0 -9 l3 4 -3 3 3 4"/><path d="M7 -6 l3 4 -3 3 3 4"/></g></g></svg></div><div class="bd"><span class="n">01</span><h3>Neck pain and stiffness</h3><p>Often the first symptom: aching or sharp pain with movement that worsens over the first 2 to 3 days.</p></div></li>
+<li class="pi-sc pi-rv" style="--d:1"><div class="stage"><svg class="sym-ic" viewBox="0 0 80 80" aria-hidden="true" focusable="false"><circle cx="40" cy="16" r="9.5" class="hd"/><path d="M40 28 L40 52 M40 34 L54 30 L48 19 M40 34 L30 48"/><path d="M40 52 L33 76 M40 52 L47 76"/><g transform="translate(24 10) rotate(-45) scale(1.25)"><g class="zap"><path d="M-7 -6 l3 4 -3 3 3 4"/><path d="M0 -9 l3 4 -3 3 3 4"/><path d="M7 -6 l3 4 -3 3 3 4"/></g></g></svg></div><div class="bd"><span class="n">02</span><h3>Headaches</h3><p>Typically starting at the base of the skull and radiating forward, caused by injured upper cervical joints.</p></div></li>
+<li class="pi-sc pi-rv" style="--d:2"><div class="stage"><svg class="sym-ic" viewBox="0 0 80 80" aria-hidden="true" focusable="false"><circle cx="40" cy="14" r="9.5" class="hd"/><path d="M40 27 L40 52 M40 32 L29 44 L26 56 M40 32 L52 42 L44 34"/><path d="M40 52 L33 76 M40 52 L47 76"/><g transform="translate(60 30) rotate(80) scale(1.25)"><g class="zap"><path d="M-7 -6 l3 4 -3 3 3 4"/><path d="M0 -9 l3 4 -3 3 3 4"/><path d="M7 -6 l3 4 -3 3 3 4"/></g></g></svg></div><div class="bd"><span class="n">03</span><h3>Shoulder pain</h3><p>Muscle tension and referred pain from the neck frequently extend into the shoulders and upper back.</p></div></li>
+<li class="pi-sc pi-rv" style="--d:3"><div class="stage"><svg class="sym-ic" viewBox="0 0 80 80" aria-hidden="true" focusable="false"><circle cx="40" cy="14" r="9.5" class="hd"/><path d="M40 27 L40 52 M40 32 L28 44 L24 62 M40 32 L52 44"/><path d="M40 52 L33 76 M40 52 L47 76"/><g transform="translate(14 54) rotate(-100) scale(1.25)"><g class="zap"><path d="M-7 -6 l3 4 -3 3 3 4"/><path d="M0 -9 l3 4 -3 3 3 4"/><path d="M7 -6 l3 4 -3 3 3 4"/></g></g></svg></div><div class="bd"><span class="n">04</span><h3>Arm numbness or tingling</h3><p>Nerve compression or irritation from spinal joint dysfunction can cause radiating symptoms into the arms.</p></div></li>
+<li class="pi-sc pi-rv" style="--d:4"><div class="stage"><svg class="sym-ic" viewBox="0 0 80 80" aria-hidden="true" focusable="false"><circle cx="40" cy="16" r="9.5" class="hd"/><path d="M40 28 L40 52 M40 34 L54 32 L50 23 M40 34 L30 48"/><path d="M40 52 L33 76 M40 52 L47 76"/><g transform="translate(58 14) rotate(60) scale(1.25)"><g class="zap"><path d="M-7 -6 l3 4 -3 3 3 4"/><path d="M0 -9 l3 4 -3 3 3 4"/><path d="M7 -6 l3 4 -3 3 3 4"/></g></g></svg></div><div class="bd"><span class="n">05</span><h3>Jaw pain (TMJ)</h3><p>The force of impact can affect the temporomandibular joint, causing jaw pain, clicking or difficulty chewing.</p></div></li>
+<li class="pi-sc pi-rv" style="--d:5"><div class="stage"><svg class="sym-ic" viewBox="0 0 80 80" aria-hidden="true" focusable="false"><g class="slump"><g class="swing"><circle cx="40" cy="14" r="9.5" class="hd"/></g><path d="M40 28 Q38 40 40 52 M40 34 L30 46 M40 34 L50 46"/></g><path d="M40 52 L33 76 M40 52 L47 76"/><g transform="translate(20 8) rotate(-60) scale(1.1)"><g class="zap"><path d="M-7 -6 l3 4 -3 3 3 4"/><path d="M0 -9 l3 4 -3 3 3 4"/><path d="M7 -6 l3 4 -3 3 3 4"/></g></g><g transform="translate(60 8) rotate(60) scale(1.1)"><g class="zap"><path d="M-7 -6 l3 4 -3 3 3 4"/><path d="M0 -9 l3 4 -3 3 3 4"/><path d="M7 -6 l3 4 -3 3 3 4"/></g></g></svg></div><div class="bd"><span class="n">06</span><h3>Dizziness and fatigue</h3><p>Disruption to the neck's sense of position and to blood flow can cause lightheadedness and exhaustion.</p></div></li>
 </ul></div></section>
 
 <section class="band" id="how" aria-labelledby="hw-h" style="padding-top:0"><div class="wrap">
