@@ -632,6 +632,43 @@ p{margin:0}
 @media (max-width:600px){.pi-scenes{grid-template-columns:minmax(0,1fr);grid-auto-rows:auto}.pi-sc,.pi-sc:nth-child(4),.pi-sc:nth-child(5){grid-column:auto}}
 @media (prefers-reduced-motion:reduce){.pi-sc{transition:none}.pi-sc:hover{transform:none}.pi-sc .burst,.pi-sc .zap1,.pi-sc .zap2,.pi-sc .zap3{opacity:1}.pi-sc .crack{stroke-dashoffset:0}}
 .pi-sc .burst{transform-box:view-box;transform-origin:330px 86px}
+/* Six symptom scene cards (whiplash): a plain 3 x 2 grid of equal cards */
+.pi-scenes.six .pi-sc,.pi-scenes.six .pi-sc:nth-child(4),.pi-scenes.six .pi-sc:nth-child(5){grid-column:span 2}
+@media (max-width:1024px){.pi-scenes.six .pi-sc,.pi-scenes.six .pi-sc:nth-child(5){grid-column:span 2}}
+@media (max-width:600px){.pi-scenes.six .pi-sc,.pi-scenes.six .pi-sc:nth-child(4),.pi-scenes.six .pi-sc:nth-child(5){grid-column:auto}}
+.pi-sc .wz{opacity:0}
+.pi-sc .wh-neck{transform-box:view-box;transform-origin:170px 92px}
+.pi-sc .wh-ring{transform-box:view-box;transform-origin:150px 104px;opacity:0}
+.pi-sc .wh-shoulder{transform-box:view-box;transform-origin:160px 86px}
+.pi-sc .wh-dot{opacity:0}
+.pi-sc .wh-jaw{transform-box:view-box;transform-origin:150px 94px}
+.pi-sc .wh-sway{transform-box:view-box;transform-origin:160px 172px}
+.pi-sc .wh-orb{transform-box:view-box;transform-origin:160px 54px}
+@media (prefers-reduced-motion:no-preference){
+  .pi-sc.play .wh-neck{animation:whNeck 3.6s cubic-bezier(.45,0,.55,1) infinite}
+  .pi-sc.play .wh-ring{animation:whRing 2.4s ease-out infinite}
+  .pi-sc.play .wh-ring.r2{animation-delay:.8s}
+  .pi-sc.play .wh-ring.r3{animation-delay:1.6s}
+  .pi-sc.play .wh-shoulder{animation:whShoulder 3.2s cubic-bezier(.45,0,.55,1) infinite}
+  .pi-sc.play .wh-dot{animation:whDot 2.4s ease-in-out infinite}
+  .pi-sc.play .wh-dot.d2{animation-delay:.4s}
+  .pi-sc.play .wh-dot.d3{animation-delay:.8s}
+  .pi-sc.play .wh-dot.d4{animation-delay:1.2s}
+  .pi-sc.play .wh-jaw{animation:whJaw 3s cubic-bezier(.45,0,.55,1) infinite}
+  .pi-sc.play .wh-sway{animation:whSway 4s ease-in-out infinite}
+  .pi-sc.play .wh-orb{animation:whOrb 4s linear infinite}
+  .pi-sc.play .wz{animation:scZap 3.4s ease-out infinite}
+  .pi-sc.play .wz.z2{animation-delay:.5s}
+}
+@keyframes whNeck{0%,18%{transform:rotate(0)}40%{transform:rotate(14deg)}56%{transform:rotate(10deg)}80%,100%{transform:rotate(0)}}
+@keyframes whRing{0%{transform:scale(.3);opacity:0}12%{opacity:.9}100%{transform:scale(1.6);opacity:0}}
+@keyframes whShoulder{0%,20%{transform:rotate(0)}42%{transform:rotate(9deg)}58%{transform:rotate(7deg)}84%,100%{transform:rotate(0)}}
+@keyframes whDot{0%{transform:translate(0,0);opacity:0}15%{opacity:1}70%{opacity:1}100%{transform:translate(62px,52px);opacity:0}}
+@keyframes whJaw{0%,20%{transform:rotate(0)}38%{transform:rotate(16deg)}50%{transform:rotate(12deg)}70%,100%{transform:rotate(0)}}
+@keyframes whSway{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+@keyframes whOrb{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.pi-sc .wz,.pi-sc .wh-dot{opacity:1}.pi-sc .wh-ring{opacity:.6}}
+
 .pi-anim .pi-sc.pi-rv.in{transition:opacity .8s ease,transform .45s cubic-bezier(.2,.7,.2,1),border-color .3s;transition-delay:0s}
 .pi-anim .pi-sc.pi-rv.in:hover{transform:translateY(-6px)}
 .pi-anim .pi-sc.pi-rv.in{clip-path:none}
@@ -836,7 +873,7 @@ p{margin:0}
 <main id="top">
 <section class="pb" aria-labelledby="pb-h"><div class="wrap">
 <div><nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="../">Home</a></li><li><a href="../auto-accident-care/">Car Accident Care</a></li><li aria-current="page">Whiplash</li></ol></nav>
-<p class="eyebrow">Car accident neck injury</p><h1 id="pb-h"><em>Whiplash</em> Treatment in Lafayette, CO</h1><p class="sub">Whiplash symptoms can appear days after an accident. Early treatment matters, so call today.</p>
+<p class="eyebrow">Car accident neck injury</p><h1 id="pb-h"><em>Whiplash Treatment</em> in Lafayette, CO</h1><p class="sub">Whiplash symptoms can appear days after an accident. Early treatment matters, so call today.</p>
 <div class="btns"><a class="btn fill" href="https://coalcreekchiro.janeapp.com" target="_blank" rel="noopener">Book an Appointment</a><a class="btn line" href="tel:7207752664">Call (720) 775-2664</a></div></div>
 <div class="pb-art"><svg viewBox="0 0 560 460" role="img" aria-labelledby="art-t"><title id="art-t">Drawing of a head and neck snapping forward and back, the motion that causes whiplash</title>
 <circle class="gr" cx="60" cy="420" r="160"/><circle class="gr" cx="60" cy="420" r="120"/>
@@ -867,13 +904,13 @@ p{margin:0}
 
 <section class="band mist" id="symptoms" aria-labelledby="sy-h" style="padding-top:0"><div class="wrap">
 <div class="head"><p class="eyebrow">Symptoms</p><h2 id="sy-h"><span class="ht">Common Whiplash <em>Symptoms</em></span></h2></div>
-<ul class="rows2">
-<li><b>Neck pain and stiffness</b><span>Often the first symptom: aching or sharp pain with movement that worsens over the first 2 to 3 days.</span></li>
-<li><b>Headaches</b><span>Typically starting at the base of the skull and radiating forward, caused by injured upper cervical joints.</span></li>
-<li><b>Shoulder pain</b><span>Muscle tension and referred pain from the neck frequently extend into the shoulders and upper back.</span></li>
-<li><b>Arm numbness or tingling</b><span>Nerve compression or irritation from spinal joint dysfunction can cause radiating symptoms into the arms.</span></li>
-<li><b>Jaw pain (TMJ)</b><span>The force of impact can affect the temporomandibular joint, causing jaw pain, clicking or difficulty chewing.</span></li>
-<li><b>Dizziness and fatigue</b><span>Disruption to the neck's sense of position and to blood flow can cause lightheadedness and exhaustion.</span></li>
+<ul class="pi-scenes six">
+<li class="pi-sc pi-rv" style="--d:0"><div class="stage"><svg viewBox="0 0 320 200" role="img" aria-label="A figure holding the back of a stiff neck" preserveAspectRatio="xMidYMid meet"><path class="sg" d="M40 172 H280"/><path class="sl" d="M160 110 L160 172 M160 172 L138 172 M160 172 L182 172"/><g class="wh-neck"><circle class="sf" cx="170" cy="62" r="13"/><path class="sl" d="M166 76 L160 110 M160 92 L190 96 L178 80"/></g><g class="sz wz" transform="translate(206 84) rotate(30)"><path d="M0 -18 V-6"/><path d="M-14 -11 l8 6"/><path d="M14 -11 l-8 6"/></g></svg></div><div class="bd"><span class="n">01</span><h3>Neck pain and stiffness</h3><p>Often the first symptom: aching or sharp pain with movement that worsens over the first 2 to 3 days.</p></div></li>
+<li class="pi-sc pi-rv" style="--d:1"><div class="stage"><svg viewBox="0 0 320 200" role="img" aria-label="A head with pain rings pulsing from the base of the skull" preserveAspectRatio="xMidYMid meet"><path class="sg" d="M40 172 H280"/><circle class="wh-ring" cx="150" cy="104" r="34" fill="none" stroke="#FFFFFF" stroke-width="3"/><circle class="wh-ring r2" cx="150" cy="104" r="34" fill="none" stroke="#FFFFFF" stroke-width="3"/><circle class="wh-ring r3" cx="150" cy="104" r="34" fill="none" stroke="#FFFFFF" stroke-width="3"/><path class="sl" d="M126 118 Q124 68 160 62 Q196 62 196 98 Q196 118 184 124 L186 150 L138 150 L136 128 Q128 126 126 118 Z"/><path class="sl" d="M138 150 L138 172 M186 150 L186 172"/></svg></div><div class="bd"><span class="n">02</span><h3>Headaches</h3><p>Typically starting at the base of the skull and radiating forward, caused by injured upper cervical joints.</p></div></li>
+<li class="pi-sc pi-rv" style="--d:2"><div class="stage"><svg viewBox="0 0 320 200" role="img" aria-label="A figure gripping a sore shoulder" preserveAspectRatio="xMidYMid meet"><path class="sg" d="M40 172 H280"/><path class="sl" d="M160 100 L160 172 M160 172 L142 172 M160 172 L178 172"/><circle class="sf" cx="160" cy="54" r="13"/><g class="wh-shoulder"><path class="sl" d="M160 100 L126 86 L96 104"/></g><path class="sl" d="M160 100 L194 86 L174 70 L140 90"/><g class="sz wz" transform="translate(112 66) rotate(-20)"><path d="M0 -18 V-6"/><path d="M-14 -11 l8 6"/><path d="M14 -11 l-8 6"/></g></svg></div><div class="bd"><span class="n">03</span><h3>Shoulder pain</h3><p>Muscle tension and referred pain from the neck frequently extend into the shoulders and upper back.</p></div></li>
+<li class="pi-sc pi-rv" style="--d:3"><div class="stage"><svg viewBox="0 0 320 200" role="img" aria-label="A figure with tingling running down one arm" preserveAspectRatio="xMidYMid meet"><path class="sg" d="M40 172 H280"/><path class="sl" d="M136 100 L136 172 M136 172 L120 172 M136 172 L152 172"/><circle class="sf" cx="136" cy="54" r="13"/><path class="sl" d="M136 100 L108 118 M136 100 L166 112 L228 164"/><circle class="sf wh-dot" cx="164" cy="112" r="4"/><circle class="sf wh-dot d2" cx="164" cy="112" r="4"/><circle class="sf wh-dot d3" cx="164" cy="112" r="4"/><circle class="sf wh-dot d4" cx="164" cy="112" r="4"/><g class="sz wz z2" transform="translate(244 160)"><path d="M0 -18 V-6"/><path d="M-14 -11 l8 6"/><path d="M14 -11 l-8 6"/></g></svg></div><div class="bd"><span class="n">04</span><h3>Arm numbness or tingling</h3><p>Nerve compression or irritation from spinal joint dysfunction can cause radiating symptoms into the arms.</p></div></li>
+<li class="pi-sc pi-rv" style="--d:4"><div class="stage"><svg viewBox="0 0 320 200" role="img" aria-label="A head in profile with a sore jaw joint" preserveAspectRatio="xMidYMid meet"><path class="sg" d="M40 172 H280"/><path class="sl" d="M120 120 Q112 60 166 54 Q206 54 204 94 L198 112"/><path class="sl" d="M120 120 L128 150 L176 150 L176 172 M128 150 L128 172"/><g class="wh-jaw"><path class="sl" d="M150 94 L190 110 L186 124 L156 126"/></g><circle class="sf" cx="150" cy="94" r="6"/><g class="sz wz" transform="translate(222 120) rotate(40)"><path d="M0 -18 V-6"/><path d="M-14 -11 l8 6"/><path d="M14 -11 l-8 6"/></g></svg></div><div class="bd"><span class="n">05</span><h3>Jaw pain (TMJ)</h3><p>The force of impact can affect the temporomandibular joint, causing jaw pain, clicking or difficulty chewing.</p></div></li>
+<li class="pi-sc pi-rv" style="--d:5"><div class="stage"><svg viewBox="0 0 320 200" role="img" aria-label="A swaying figure with circles orbiting the head" preserveAspectRatio="xMidYMid meet"><path class="sg" d="M40 172 H280"/><g class="wh-sway"><circle class="sf" cx="160" cy="54" r="13"/><path class="sl" d="M160 68 L160 118 M160 86 L132 104 M160 86 L188 104 M160 118 L144 172 M160 118 L176 172"/><g class="wh-orb"><circle class="sf" cx="128" cy="54" r="4"/><circle class="sf" cx="192" cy="54" r="4"/><circle class="sf" cx="160" cy="22" r="4"/></g></g></svg></div><div class="bd"><span class="n">06</span><h3>Dizziness and fatigue</h3><p>Disruption to the neck's sense of position and to blood flow can cause lightheadedness and exhaustion.</p></div></li>
 </ul></div></section>
 
 <section class="band" id="how" aria-labelledby="hw-h" style="padding-top:0"><div class="wrap">
@@ -959,8 +996,27 @@ p{margin:0}
     </div>
   </div>
 </section>
-
-<section class="band mist" id="faq" aria-labelledby="faq-h" style="padding-top:0"><div class="wrap faq">
+<section class="band" id="reviews" aria-labelledby="rev-h">
+  <div class="wrap">
+    <div class="head"><p class="eyebrow">Selected Google reviews</p><h2 id="rev-h"><span class="ht">What Patients Say About <em>Dr. Johnston</em></span></h2></div>
+    <div class="rv">
+      <div class="rv-photo">
+        <img src="../assets/office.jpg" alt="The Coal Creek Chiropractic office at 310 W. Baseline Rd." width="700" height="933">
+        <div class="rv-over">
+          <span class="rv-big">5.0</span>
+          <span class="r-stars big" role="img" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <p>From 6 patient reviews on Google</p>
+          <div class="btns"><a class="btn fill" href="https://coalcreekchiro.janeapp.com" target="_blank" rel="noopener">Book an Appointment</a><a class="btn line" href="https://maps.app.goo.gl/UURaNaKNGKdn5LtY8" target="_blank" rel="noopener">See All Google Reviews</a></div>
+        </div>
+      </div>
+      <div class="rv-feed" aria-label="Patient reviews">
+        <button class="rv-btn" id="rvBtn" type="button" aria-pressed="false" aria-label="Pause the scrolling reviews"><svg class="i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5l11 7-11 7z"/></svg></button>
+        <div class="rv-track"><div class="rv-set"><figure class="rq"><span class="r-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><blockquote>&#8220;I was in what I thought was a minor fender bender, but it ended up causing pretty significant whiplash, severe headaches, and migraines that affected my ability to play with and care for my girls.&#8221;</blockquote><figcaption><span class="rq-av" aria-hidden="true">G</span><span><b>George Morris</b><small>Google review</small></span><a class="textlink" href="https://maps.app.goo.gl/B7rTggFbK1Ae5joF6" target="_blank" rel="noopener">Read Full Review</a></figcaption></figure><figure class="rq"><span class="r-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><blockquote>&#8220;He is so patient and takes so much time to listen to my concerns. He&#8217;s very down to earth and practical, which I love.&#8221;</blockquote><figcaption><span class="rq-av" aria-hidden="true">S</span><span><b>Sarah Zern</b><small>Google review</small></span><a class="textlink" href="https://maps.app.goo.gl/hodN4uBfA2p5bfCP7" target="_blank" rel="noopener">Read Full Review</a></figcaption></figure><figure class="rq"><span class="r-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><blockquote>&#8220;He is well-versed in the effects of whiplash on the body, from a car accident or a sports injury.&#8221;</blockquote><figcaption><span class="rq-av" aria-hidden="true">M</span><span><b>Matthew Weidinger</b><small>Google review</small></span><a class="textlink" href="https://maps.app.goo.gl/nmLaeD2cJj3xTGHo7" target="_blank" rel="noopener">Read Full Review</a></figcaption></figure><figure class="rq"><span class="r-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><blockquote>&#8220;He took the time to explain what was happening, what I could do to help my recovery, and how to gradually get back to the activities I love.&#8221;</blockquote><figcaption><span class="rq-av" aria-hidden="true">C</span><span><b>Cheyenne Morris</b><small>Google review</small></span><a class="textlink" href="https://maps.app.goo.gl/geYjv44GC8GQUkcC7" target="_blank" rel="noopener">Read Full Review</a></figcaption></figure></div><div class="rv-set" aria-hidden="true"><figure class="rq"><span class="r-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><blockquote>&#8220;I was in what I thought was a minor fender bender, but it ended up causing pretty significant whiplash, severe headaches, and migraines that affected my ability to play with and care for my girls.&#8221;</blockquote><figcaption><span class="rq-av" aria-hidden="true">G</span><span><b>George Morris</b><small>Google review</small></span></figcaption></figure><figure class="rq"><span class="r-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><blockquote>&#8220;He is so patient and takes so much time to listen to my concerns. He&#8217;s very down to earth and practical, which I love.&#8221;</blockquote><figcaption><span class="rq-av" aria-hidden="true">S</span><span><b>Sarah Zern</b><small>Google review</small></span></figcaption></figure><figure class="rq"><span class="r-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><blockquote>&#8220;He is well-versed in the effects of whiplash on the body, from a car accident or a sports injury.&#8221;</blockquote><figcaption><span class="rq-av" aria-hidden="true">M</span><span><b>Matthew Weidinger</b><small>Google review</small></span></figcaption></figure><figure class="rq"><span class="r-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><blockquote>&#8220;He took the time to explain what was happening, what I could do to help my recovery, and how to gradually get back to the activities I love.&#8221;</blockquote><figcaption><span class="rq-av" aria-hidden="true">C</span><span><b>Cheyenne Morris</b><small>Google review</small></span></figcaption></figure></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="band mist" id="faq" aria-labelledby="faq-h"><div class="wrap faq">
 <div class="faq-side"><p class="eyebrow">Questions</p><h2 id="faq-h" class="one-line">Whiplash <em>FAQs</em></h2>
 <p class="lede">Common questions from patients after a car accident. Have a question that is not here? Call the office and ask.</p>
 <div class="btns"><a class="btn line" href="tel:7207752664">Call (720) 775-2664</a></div>
@@ -983,7 +1039,7 @@ p{margin:0}
     </div>
   </div>
 </section>
-<section class="close on-dark" aria-labelledby="pc-h"><img src="../assets/room.jpg" alt="" width="1400" height="900" style="object-position:50% 60%"><div class="wrap"><h2 id="pc-h" class="one-line">Neck Pain After an Accident? <em>Don't Wait</em></h2><p>Same-day evaluation available for accident patients. We accept auto insurance, MedPay and personal injury liens.</p>
+<section class="close on-dark" aria-labelledby="pc-h"><img src="../assets/room.jpg" alt="" width="1400" height="900" style="object-position:50% 60%"><div class="wrap"><h2 id="pc-h" class="one-line"><em>Neck Pain</em> After an Accident? Don't Wait</h2><p>Same-day evaluation available for accident patients. We accept auto insurance, MedPay and personal injury liens.</p>
 <div class="btns center"><a class="btn fill" href="https://coalcreekchiro.janeapp.com" target="_blank" rel="noopener">Book an Appointment</a><a class="btn line" href="tel:7207752664">Call (720) 775-2664</a></div></div></section>
 </main>
 <footer class="foot">
