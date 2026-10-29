@@ -961,6 +961,18 @@ p{margin:0}
 /* Three green cards in one row */
 @media (max-width:1024px){.pi-scenes.three{grid-template-columns:repeat(3,minmax(0,1fr))}.pi-scenes.three .pi-sc{grid-column:auto}}
 @media (max-width:760px){.pi-scenes.three{grid-template-columns:minmax(0,1fr)}}
+
+/* Prenatal banner: the spine line draws in, the pelvis ring pulses */
+.pb-art .pn-ring{transform-box:fill-box;transform-origin:center}
+@media (prefers-reduced-motion:no-preference){
+  .pb-art .pn-ring{animation:pnring 1.6s ease-in-out 2s 3}
+  @keyframes pnring{0%,100%{transform:none;opacity:1}50%{transform:scale(1.18);opacity:.55}}
+}
+/* Research notes: content written from our research for the doctor to review */
+.rs-note-band{padding:18px 0 0}
+.rs-note{display:inline-flex;gap:8px;align-items:center;margin:0;padding:8px 14px;border:1px dashed #BABBB0;border-radius:999px;font-size:13.5px;color:var(--ink-2);background:#FFFFFF}
+.rs-note b{color:var(--green);font-weight:500}
+.rs-tag{display:inline-block;margin-left:10px;padding:2px 9px;border:1px dashed #BABBB0;border-radius:999px;font-size:11.5px;letter-spacing:.06em;text-transform:none;color:var(--ink-2);vertical-align:1px}
 </style>
 </head>
 <body class="clean">
@@ -974,7 +986,7 @@ p{margin:0}
       <div class="nav-dd on" id="ddSvc"><a class="dd-top" href="#services">Services</a><button class="dd-btn" type="button" aria-expanded="false" aria-controls="ddSvcMenu" aria-label="Show service pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="dd-menu" id="ddSvcMenu"><a href="#services">All Services</a><a href="../adjustments/">Chiropractic Adjustments</a><a href="../iastm/">IASTM</a><a href="../dry-needling/" aria-current="page">Dry Needling</a><a href="../lasting-relief/">Maintenance Care</a></div></div>
       <div class="nav-dd" id="ddFam"><a class="dd-top" href="../wellness-care/">Family &amp; Athletes</a><button class="dd-btn" type="button" aria-expanded="false" aria-controls="ddFamMenu" aria-label="Show family and athlete pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="dd-menu" id="ddFamMenu"><a href="../wellness-care/">Wellness Care</a><a href="../sports-injury/">Athletes &amp; Weekend Warriors</a></div></div>
+        <div class="dd-menu" id="ddFamMenu"><a href="../wellness-care/">Wellness Care</a><a href="../sports-injury/">Athletes &amp; Weekend Warriors</a><a href="../prenatal-care/">Prenatal Care</a></div></div>
       <a href="../#attorneys">For Attorneys</a>
       <a href="../#doctor">About</a>
       <a href="#visit">Contact</a>
@@ -987,7 +999,7 @@ p{margin:0}
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mnav" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
   <div class="wrap"><nav class="mobile-nav" id="mnav" aria-label="Mobile">
-    <a href="../">Home</a><a href="../auto-accident-care/">Car Accident Care</a><a class="sub" href="../personal-injury/">Personal Injury</a><a class="sub" href="../whiplash/">Whiplash</a><a href="#services">Services</a><a class="sub" href="../adjustments/">Chiropractic Adjustments</a><a class="sub" href="../iastm/">IASTM</a><a class="sub" href="../dry-needling/" aria-current="page">Dry Needling</a><a class="sub" href="../lasting-relief/">Maintenance Care</a><a href="../wellness-care/">Family &amp; Athletes</a><a class="sub" href="../wellness-care/">Wellness Care</a><a class="sub" href="../sports-injury/">Athletes &amp; Weekend Warriors</a><a href="../#attorneys">For Attorneys</a><a href="../#doctor">About</a><a href="#visit">Contact</a><a href="tel:7207752664">Call (720) 775-2664</a>
+    <a href="../">Home</a><a href="../auto-accident-care/">Car Accident Care</a><a class="sub" href="../personal-injury/">Personal Injury</a><a class="sub" href="../whiplash/">Whiplash</a><a href="#services">Services</a><a class="sub" href="../adjustments/">Chiropractic Adjustments</a><a class="sub" href="../iastm/">IASTM</a><a class="sub" href="../dry-needling/" aria-current="page">Dry Needling</a><a class="sub" href="../lasting-relief/">Maintenance Care</a><a href="../wellness-care/">Family &amp; Athletes</a><a class="sub" href="../wellness-care/">Wellness Care</a><a class="sub" href="../sports-injury/">Athletes &amp; Weekend Warriors</a><a class="sub" href="../prenatal-care/">Prenatal Care</a><a href="../#attorneys">For Attorneys</a><a href="../#doctor">About</a><a href="#visit">Contact</a><a href="tel:7207752664">Call (720) 775-2664</a>
   </nav></div>
 </header>
 <main id="top">
