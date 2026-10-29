@@ -576,6 +576,19 @@ p{margin:0}
   .head-cta{display:none}
 }
 
+/* Header with the Family & Athletes menu: wider bar on large screens, phone-style menu below 1280px */
+.site-head .wrap{max-width:1440px}
+@media (max-width:1439px){.head-cta .line{display:none}}
+@media (max-width:1799px){.head-social{display:none}}
+@media (max-width:1999px){.head-social span{display:none}}
+@media (max-width:1279px){
+  .nav{display:none}
+  .menu-btn{display:block;margin-left:0}
+  .head-cta{margin-left:auto}
+  .mobile-nav.open{display:grid;gap:4px;padding:8px 0 18px}
+  .mobile-nav a{padding:12px 4px;text-decoration:none;font-weight:500;border-bottom:1px solid #BABBB0}
+}
+
 /* Personal injury: photo tiles (cases) and photo cards (6 reasons) */
 .pi-sc-cta{margin-top:clamp(28px,3vw,40px);justify-content:center}
 .pi-scenes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:1fr;gap:18px}
@@ -946,7 +959,9 @@ p{margin:0}
       <div class="nav-dd" id="ddCar"><a class="dd-top" href="../auto-accident-care/">Car Accident Care</a><button class="dd-btn" type="button" aria-expanded="false" aria-controls="ddCarMenu" aria-label="Show car accident care pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="dd-menu" id="ddCarMenu"><a href="../auto-accident-care/">Car Accident Care</a><a href="../personal-injury/">Personal Injury</a><a href="../whiplash/">Whiplash</a></div></div>
       <div class="nav-dd on" id="ddSvc"><a class="dd-top" href="#services">Services</a><button class="dd-btn" type="button" aria-expanded="false" aria-controls="ddSvcMenu" aria-label="Show service pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="dd-menu" id="ddSvcMenu"><a href="#services">All Services</a><a href="../adjustments/">Chiropractic Adjustments</a><a href="../iastm/">IASTM</a><a href="../dry-needling/" aria-current="page">Dry Needling</a><a href="../lasting-relief/">Maintenance Care</a><a href="../wellness-care/">Wellness Care</a></div></div>
+        <div class="dd-menu" id="ddSvcMenu"><a href="#services">All Services</a><a href="../adjustments/">Chiropractic Adjustments</a><a href="../iastm/">IASTM</a><a href="../dry-needling/" aria-current="page">Dry Needling</a><a href="../lasting-relief/">Maintenance Care</a></div></div>
+      <div class="nav-dd" id="ddFam"><a class="dd-top" href="../wellness-care/">Family &amp; Athletes</a><button class="dd-btn" type="button" aria-expanded="false" aria-controls="ddFamMenu" aria-label="Show family and athlete pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="dd-menu" id="ddFamMenu"><a href="../wellness-care/">Wellness Care</a></div></div>
       <a href="../#attorneys">For Attorneys</a>
       <a href="../#doctor">About</a>
       <a href="#visit">Contact</a>
@@ -959,7 +974,7 @@ p{margin:0}
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mnav" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
   <div class="wrap"><nav class="mobile-nav" id="mnav" aria-label="Mobile">
-    <a href="../">Home</a><a href="../auto-accident-care/">Car Accident Care</a><a class="sub" href="../personal-injury/">Personal Injury</a><a class="sub" href="../whiplash/">Whiplash</a><a href="#services">Services</a><a class="sub" href="../adjustments/">Chiropractic Adjustments</a><a class="sub" href="../iastm/">IASTM</a><a class="sub" href="../dry-needling/" aria-current="page">Dry Needling</a><a class="sub" href="../lasting-relief/">Maintenance Care</a><a class="sub" href="../wellness-care/">Wellness Care</a><a href="../#attorneys">For Attorneys</a><a href="../#doctor">About</a><a href="#visit">Contact</a><a href="tel:7207752664">Call (720) 775-2664</a>
+    <a href="../">Home</a><a href="../auto-accident-care/">Car Accident Care</a><a class="sub" href="../personal-injury/">Personal Injury</a><a class="sub" href="../whiplash/">Whiplash</a><a href="#services">Services</a><a class="sub" href="../adjustments/">Chiropractic Adjustments</a><a class="sub" href="../iastm/">IASTM</a><a class="sub" href="../dry-needling/" aria-current="page">Dry Needling</a><a class="sub" href="../lasting-relief/">Maintenance Care</a><a href="../wellness-care/">Family &amp; Athletes</a><a class="sub" href="../wellness-care/">Wellness Care</a><a href="../#attorneys">For Attorneys</a><a href="../#doctor">About</a><a href="#visit">Contact</a><a href="tel:7207752664">Call (720) 775-2664</a>
   </nav></div>
 </header>
 <main id="top">
