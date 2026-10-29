@@ -865,6 +865,26 @@ p{margin:0}
   .pb .sub{font-size:17px}
   .pb-art .lb{font-size:20px}
 }
+
+/* Adjustments banner: one vertebra slides back into line */
+.pb-art .adj-v{transform-box:view-box}
+.pb-art .adj-z{opacity:0}
+@media (prefers-reduced-motion:no-preference){
+  .pb-art .adj-v{animation:adjv 2.6s cubic-bezier(.5,0,.2,1) .3s both}
+  @keyframes adjv{0%,48%{transform:translateX(36px)}70%{transform:translateX(-5px)}84%,100%{transform:none}}
+  .pb-art .adj-z{animation:adjz 2.6s ease .3s both}
+  @keyframes adjz{0%{opacity:0}14%,44%{opacity:1}60%,100%{opacity:0}}
+}
+.pi-sc .sym-ic .spine rect{fill:#FFFFFF}
+.pi-sc .sym-ic .disc{fill:#BABBB0}
+.pi-sc .sym-ic .bulge{fill:#000002;transform-box:fill-box;transform-origin:left center}
+@media (prefers-reduced-motion:no-preference){
+  .pi-scenes.anim.in .bulge{animation:ij-bulge 1.1s ease-in-out 3 both;animation-delay:calc(var(--k,0)*.2s + .9s)}
+  .pi-scenes.anim.in.done > li:hover .bulge{animation:ij-bulge .9s ease-in-out infinite}
+}
+.pi-scenes.five-h .bd h3{margin-top:4px}
+.adj-lead{max-width:860px;margin:-14px 0 28px}
+.adj-after{max-width:860px;margin:28px auto 0;text-align:center}
 </style>
 </head>
 <body class="clean">
@@ -956,7 +976,7 @@ p{margin:0}
     <div class="head"><p class="eyebrow">Services</p><h2 id="svc-h"><span class="ht">Treatments at <em>Coal Creek</em></span></h2></div>
     <div class="svc">
       <article class="s2"><figure class="svc-img ph-img"><img src="../assets/ph_pi.jpg" alt="Placeholder photo: a hand on a sore neck after an injury" width="1100" height="733"><span class="ph-tag">Placeholder photo</span></figure><h3>Personal Injury Treatment</h3><p class="desc">Expert chiropractic care for injuries resulting from slip and falls, workplace accidents, and other personal injury scenarios. We provide thorough documentation to support your legal and insurance claims.</p><a class="textlink geo" href="../personal-injury/">Personal injury chiropractor in Lafayette<span aria-hidden="true"> &#8594;</span></a></article>
-      <article class="s3"><figure class="svc-img"><img src="../assets/table.jpg" alt="The adjusting table in the Coal Creek Chiropractic treatment room" width="1100" height="733"></figure><h3>Spinal Adjustment</h3><p class="desc">Precise spinal manipulation to restore proper alignment, reduce pain, and improve mobility. Regular adjustments help your body heal naturally and prevent chronic pain from developing after an injury.</p><a class="textlink geo" href="https://coalcreekchiro.com/adjustments">Chiropractic adjustments in Lafayette, CO<span aria-hidden="true"> &#8594;</span></a></article>
+      <article class="s3"><figure class="svc-img"><img src="../assets/table.jpg" alt="The adjusting table in the Coal Creek Chiropractic treatment room" width="1100" height="733"></figure><h3>Spinal Adjustment</h3><p class="desc">Precise spinal manipulation to restore proper alignment, reduce pain, and improve mobility. Regular adjustments help your body heal naturally and prevent chronic pain from developing after an injury.</p><a class="textlink geo" href="../adjustments/">Chiropractic adjustments in Lafayette, CO<span aria-hidden="true"> &#8594;</span></a></article>
       <article class="s4"><figure class="svc-img ph-img"><img src="../assets/ph_iastm.jpg" alt="Placeholder photo: soft tissue work along the forearm" width="1100" height="733"><span class="ph-tag">Placeholder photo</span></figure><h3>Soft Tissue Therapy</h3><p class="desc">Targeted massage, myofascial release, and manual therapy techniques to address muscle tension, scar tissue, and inflammation. Effective for neck, shoulder, and back pain following an accident.</p><a class="textlink geo" href="https://coalcreekchiro.com/iastm">Lafayette soft tissue treatment<span aria-hidden="true"> &#8594;</span></a></article>
       <article class="s5"><figure class="svc-img ph-img"><img src="../assets/ph_rehab.jpg" alt="Placeholder photo: a supervised resistance band exercise" width="1100" height="733"><span class="ph-tag">Placeholder photo</span></figure><h3>Rehabilitation Exercises</h3><p class="desc">Customized exercise programs designed to rebuild strength, restore range of motion, and prevent re-injury. We guide you through every step so you can continue progress between appointments.</p></article>
       <article class="s6"><figure class="svc-img"><img src="../assets/desk.jpg" alt="The desk in the Coal Creek Chiropractic treatment room" width="1100" height="733"></figure><h3>Medical Documentation</h3><p class="desc">Thorough clinical documentation of your injuries, treatment, and progress, critical for insurance claims and personal injury cases. We work alongside your attorney and medical team to support your case.</p></article>
@@ -1095,11 +1115,12 @@ p{margin:0}
     dd.addEventListener('focusout',function(e){if(!dd.contains(e.relatedTarget)){dd.classList.remove('open','shut');db.setAttribute('aria-expanded','false');}});}
   var tr=document.querySelector('.team-rings');
   if(tr&&'IntersectionObserver' in window){tr.classList.add('paused');new IntersectionObserver(function(es){es.forEach(function(e){tr.classList.toggle('paused',!e.isIntersecting);});}).observe(tr);}
-  var ig=document.getElementById('injGrid');
-  if(ig&&'IntersectionObserver' in window&&!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)){
-    [].forEach.call(ig.children,function(c,k){c.style.setProperty('--k',k);});
-    ig.classList.add('anim');
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){ig.classList.add('in');io.disconnect();setTimeout(function(){ig.classList.add('done');},5600);}});},{threshold:0,rootMargin:'0px 0px -15% 0px'});io.observe(ig);
+  if('IntersectionObserver' in window&&!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)){
+    [].forEach.call(document.querySelectorAll('#injGrid,.inj-anim'),function(ig){
+      [].forEach.call(ig.children,function(c,k){c.style.setProperty('--k',k);});
+      ig.classList.add('anim');
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){ig.classList.add('in');io.disconnect();setTimeout(function(){ig.classList.add('done');},5600);}});},{threshold:0,rootMargin:'0px 0px -15% 0px'});io.observe(ig);
+    });
   }
 })();
 </script>
