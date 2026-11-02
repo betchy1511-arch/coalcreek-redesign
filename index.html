@@ -588,6 +588,9 @@ p{margin:0}
   .mobile-nav a{padding:12px 4px;text-decoration:none;font-weight:500;border-bottom:1px solid #BABBB0}
 }
 
+/* White sections sit on a white page, so their paddings stack: keep one gap between them */
+.band:not(.ins){padding-top:clamp(40px,3.4vw,56px);padding-bottom:clamp(40px,3.4vw,56px)}
+.band:not(.ins)+.band:not(.ins){padding-top:0}
 /* Phone layout: tighter section gaps, compact footer, map opens under the tapped town */
 .ft-gbp{display:none!important}
 .ft-tel{color:inherit}
