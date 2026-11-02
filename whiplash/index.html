@@ -1046,12 +1046,13 @@ p{margin:0}
   .pb-art .mp-check{stroke-dasharray:100;animation:mpcheck .9s ease-out 1s both}
   @keyframes mpcheck{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
 }
-.mp-list{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px}
-.mp-list li{padding:14px 0;border-top:1px solid #BABBB0}
-.mp-list b{display:block;font-size:17px}
-.mp-list .mp-cta{display:flex;align-items:center}
-.mp-list .mp-cta .btns{margin:0}
-@media (max-width:760px){.mp-list{grid-template-columns:minmax(0,1fr)}}
+.inj.mp-grid{margin-top:32px}
+@media (min-width:901px){
+  .inj.mp-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .inj.mp-grid>div{padding:24px;border-right:1px solid #BABBB0}
+  .inj.mp-grid>div:nth-child(3n+1){padding-left:0}
+  .inj.mp-grid>div:nth-child(3n){border-right:0;padding-right:0}
+}
 /* Medical financing banner: a dot travels from financing to resolution */
 .pb-art .mf-node{fill:#FFFFFF}
 .pb-art .mf-dot{fill:#000002;offset-path:path('M80 90 L200 180 L320 270 L440 360');offset-distance:100%}
