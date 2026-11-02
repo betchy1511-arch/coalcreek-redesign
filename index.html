@@ -493,7 +493,14 @@ p{margin:0}
 @media (max-width:900px){
   .rv{grid-template-columns:minmax(0,1fr)}
   .rv-photo{min-height:420px}
-  .rv-feed{height:480px}
+  .rv-feed{height:auto;overflow:visible;padding:0;background:transparent}
+  .rv-feed::before,.rv-feed::after,.rv-btn,.rv-set[aria-hidden="true"]{display:none}
+  .rv-track{animation:none!important}
+  .rv-set{padding-top:0;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rq{grid-template-rows:auto 1fr auto}
+  .rq figcaption{flex-wrap:wrap}
+  .rq figcaption>span:not(.rq-av){flex:1 1 calc(100% - 52px)}
+  .rq .textlink{margin-left:50px}
   .hero .wrap,.path,.team,.doc,.visit,.faq,.atty,.area,.rev{grid-template-columns:minmax(0,1fr)}
   .ring-frame{justify-self:center;max-width:420px}
   .addr-card{left:0}
@@ -558,7 +565,7 @@ p{margin:0}
   .rv-feed{height:auto;overflow:visible;padding:0;background:transparent}
   .rv-feed::before,.rv-feed::after,.rv-btn,.rv-set[aria-hidden="true"]{display:none}
   .rv-track{animation:none!important}
-  .rv-set{padding-top:0}
+  .rv-set{padding-top:0;grid-template-columns:minmax(0,1fr)}
   .rv-photo{min-height:380px}
   .rq figcaption{flex-wrap:wrap}
   .rq figcaption>span:not(.rq-av){flex:1 1 calc(100% - 52px)}
