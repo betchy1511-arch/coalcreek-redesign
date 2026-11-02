@@ -1047,15 +1047,16 @@ p{margin:0}
 @media (max-width:760px){.mp-list{grid-template-columns:minmax(0,1fr)}}
 /* Medical financing banner: a dot travels from financing to resolution */
 .pb-art .mf-node{fill:#FFFFFF}
-.pb-art .mf-dot{fill:#000002;offset-path:path('M100 110 L260 230 L420 350');offset-distance:100%}
+.pb-art .mf-dot{fill:#000002;offset-path:path('M80 90 L200 180 L320 270 L440 360');offset-distance:100%}
 @media (prefers-reduced-motion:no-preference){
   .pb-art .mf-dot{animation:mfdot 3s ease-in-out .4s both}
   @keyframes mfdot{from{offset-distance:0%}to{offset-distance:100%}}
 }
 .pi-sc .bd .mf-tag{display:block;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
-.pi-sc .bd .mf-link{display:inline-flex;align-self:flex-start;width:fit-content;align-items:center;margin-top:12px;min-height:40px;padding:0 16px;border:1.5px solid #FFFFFF;border-radius:999px;color:#FFFFFF;text-decoration:none;font-weight:500;font-size:14.5px}
+.pi-sc .bd .mf-link{display:inline-flex;align-self:flex-start;width:fit-content;align-items:center;margin-top:auto;min-height:40px;padding:0 16px;border:1.5px solid #FFFFFF;border-radius:999px;color:#FFFFFF;text-decoration:none;font-weight:500;font-size:14.5px}
 .pi-sc .bd .mf-link:hover{background:#FFFFFF;color:#000002}
-.pi-sc .bd .mf-ref{display:block;margin-top:12px;font-weight:500}
+.pi-sc .bd .mf-ref{display:block;margin-top:auto;font-weight:500}
+.pi-sc .bd:has(.mf-tag) p{margin-bottom:14px}
 </style>
 </head>
 <body class="clean">
@@ -1253,7 +1254,7 @@ p{margin:0}
     <div class="visit">
       <div class="map-embed"><img class="map-img" src="../assets/mapimg.jpg" alt="Google map showing Coal Creek Chiropractic on W. Baseline Rd. in Lafayette" width="1600" height="1123"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3458.324573731233!2d-105.0945742!3d39.99998310000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876bf590b5efc85f%3A0x7f299a234d4e34a8!2sCoal%20Creek%20Chiropractic!5e1!3m2!1sen!2sus!4v1792607187945!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Map of Coal Creek Chiropractic, 310 W. Baseline Rd., Lafayette, CO"></iframe></div>
       <div class="vinfo">
-        <div><h3 style="margin-bottom:6px">Coal Creek Chiropractic</h3><p style="color:var(--ink-2)">310 W. Baseline Rd., Lafayette, CO 80026<br>Phone: (720) 775-2664</p></div>
+        <div><h3 style="margin-bottom:6px">Coal Creek Chiropractic</h3><p style="color:var(--ink-2)">310 W. Baseline Rd., Lafayette, CO 80026<br>Phone: <a href="tel:7207752664">(720) 775-2664</a></p></div>
         <table class="hours"><caption class="eyebrow" style="text-align:left;padding-bottom:8px">Office hours</caption>
           <tr><th scope="row">Monday to Friday</th><td>8 AM to 12 PM, 2 PM to 6 PM</td></tr>
           <tr><th scope="row">Saturday</th><td>By appointment</td></tr>
