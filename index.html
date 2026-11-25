@@ -644,6 +644,23 @@ p{margin:0}
 .float-cta.is-hidden{opacity:0;transform:translateY(12px);pointer-events:none;visibility:hidden}
 @media (prefers-reduced-motion:reduce){.float-cta{transition:none}}
 @media (max-width:560px){.ins-chips li{flex:0 0 50%;border-left:0;padding:0 8px}.ins-chips li:last-child{flex-basis:100%}}
+
+/* FAQ: the side photo fills whatever height the question list leaves, so neither column shows a blank area */
+@media (min-width:901px){
+.faq{align-items:stretch}
+.faq-side{display:flex;flex-direction:column;gap:16px;position:static}
+.faq-side>*{margin-top:0;margin-bottom:0}
+.faq-photo{flex:1 1 180px;min-height:180px;aspect-ratio:auto;position:relative;margin:6px 0 0}
+.faq-photo img{position:absolute;inset:0}
+}
+
+/* Doctor: at mid widths the bio runs longer than the photos, so the main photo grows to match */
+@media (min-width:901px) and (max-width:1300px){
+.doc{align-items:stretch}
+.doc-photos{display:flex;flex-direction:column}
+.doc-photos .p1{flex:1 1 auto;min-height:0}
+.doc-photos .p1 img{height:100%;aspect-ratio:auto}
+}
 </style>
 </head>
 <body class="clean">

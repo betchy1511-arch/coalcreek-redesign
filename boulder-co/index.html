@@ -646,6 +646,23 @@ p{margin:0}
 @media (prefers-reduced-motion:reduce){.float-cta{transition:none}}
 @media (max-width:560px){.ins-chips li{flex:0 0 50%;border-left:0;padding:0 8px}.ins-chips li:last-child{flex-basis:100%}}
 
+/* FAQ: the side photo fills whatever height the question list leaves, so neither column shows a blank area */
+@media (min-width:901px){
+.faq{align-items:stretch}
+.faq-side{display:flex;flex-direction:column;gap:16px;position:static}
+.faq-side>*{margin-top:0;margin-bottom:0}
+.faq-photo{flex:1 1 180px;min-height:180px;aspect-ratio:auto;position:relative;margin:6px 0 0}
+.faq-photo img{position:absolute;inset:0}
+}
+
+/* Doctor: at mid widths the bio runs longer than the photos, so the main photo grows to match */
+@media (min-width:901px) and (max-width:1300px){
+.doc{align-items:stretch}
+.doc-photos{display:flex;flex-direction:column}
+.doc-photos .p1{flex:1 1 auto;min-height:0}
+.doc-photos .p1 img{height:100%;aspect-ratio:auto}
+}
+
 /* Personal injury: photo tiles (cases) and photo cards (6 reasons) */
 .pi-sc-cta{margin-top:clamp(28px,3vw,40px);justify-content:center}
 .pi-scenes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:1fr;gap:18px}
@@ -1311,7 +1328,7 @@ p{margin:0}
 <p class="lede">Answers for drivers coming to the office from Boulder. Have a question that is not here? Call the office and ask.</p>
 <div class="btns"><a class="btn line" href="tel:7207752664">Call (720) 775-2664</a></div>
 <figure class="faq-photo"><img src="../assets/room.jpg" alt="The treatment room at Coal Creek Chiropractic, with an adjusting table by the windows" width="700" height="933"></figure></div>
-<div class="faq-list"><details><summary>Is the office close to Boulder?<i aria-hidden="true"></i></summary><div class="a">It is about 24 minutes from downtown Boulder, east in Lafayette.</div></details><details><summary>Which way should I drive from Boulder?<i aria-hidden="true"></i></summary><div class="a">Either works. By Arapahoe Avenue it is about 10.9 miles and 24 minutes. Staying on Baseline Road is about 12.2 miles and 25 minutes.</div></details><details><summary>Do I need a lawyer before I book?<i aria-hidden="true"></i></summary><div class="a">No. You can book a visit on your own. If you have an attorney, records can be shared with them when you ask.</div></details><details><summary>Will you work with my doctor and physical therapist?<i aria-hidden="true"></i></summary><div class="a">Yes. Dr. Johnston works alongside your MDs, physical therapists and surgeons so your care fits together.</div></details></div></div></section>
+<div class="faq-list"><details><summary>Is the office close to Boulder?<i aria-hidden="true"></i></summary><div class="a">It is about 24 minutes from downtown Boulder, east in Lafayette.</div></details><details><summary>Which way should I drive from Boulder?<i aria-hidden="true"></i></summary><div class="a">Either works. By Arapahoe Avenue it is about 10.9 miles and 24 minutes. Staying on Baseline Road is about 12.2 miles and 25 minutes.</div></details><details><summary>Do I need a lawyer before I book?<i aria-hidden="true"></i></summary><div class="a">No. You can book a visit on your own. If you have an attorney, records can be shared with them when you ask.</div></details><details><summary>Will you work with my doctor and physical therapist?<i aria-hidden="true"></i></summary><div class="a">Yes. Dr. Johnston works alongside your MDs, physical therapists and surgeons so your care fits together.</div></details><details><summary>Can I be seen the same day?<i aria-hidden="true"></i></summary><div class="a">Yes. Same-day appointments are available. Book online or call <a href="tel:7207752664">(720) 775-2664</a>.</div></details><details><summary>I was at fault. Can I still be treated?<i aria-hidden="true"></i></summary><div class="a">Yes. MedPay is designed as a no-fault benefit, so it can help even if you caused the accident. Call the office to ask about your coverage.</div></details></div></div></section>
 <section class="band" id="visit" aria-labelledby="visit-h">
   <div class="wrap">
     <div class="head"><p class="eyebrow">Visit the office</p><h2 id="visit-h"><span class="ht">The White Cottage on <em>Baseline Road</em></span></h2></div>
