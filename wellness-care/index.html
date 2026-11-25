@@ -670,6 +670,11 @@ p{margin:0}
 .svc .textlink{align-self:stretch;justify-content:space-between;text-align:left;border-radius:12px;padding:10px 16px;font-size:14.5px;letter-spacing:0}
 @media (prefers-reduced-motion:reduce){.btns .textlink,.svc .textlink{transition:none}}
 
+/* Header with the Service Areas menu: on laptops the phone button moves out of the header (it stays in the hero, FAQ and footer) so Book never leaves the screen */
+@media (max-width:1800px){.head-cta .line{display:none}}
+@media (max-width:1500px){.nav{gap:10px}.nav > a,.nav .dd-top{font-size:14px}}
+@media (min-width:1381px) and (max-width:1430px){.head-cta .hc-long{display:none}.head-cta .hc-short{display:inline}}
+
 /* Personal injury: photo tiles (cases) and photo cards (6 reasons) */
 .pi-sc-cta{margin-top:clamp(28px,3vw,40px);justify-content:center}
 .pi-scenes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:1fr;gap:18px}
@@ -1161,6 +1166,8 @@ p{margin:0}
       <a href="../expert-witness/">For Attorneys</a>
       <div class="nav-dd" id="ddFin"><a class="dd-top" href="../medpay/">Financing</a><button class="dd-btn" type="button" aria-expanded="false" aria-controls="ddFinMenu" aria-label="Show financing pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="dd-menu" id="ddFinMenu"><a href="../medpay/">MedPay</a><a href="../medical-financing/">Medical Financing</a></div></div>
+      <div class="nav-dd" id="ddArea"><a class="dd-top" href="../#area">Service Areas</a><button class="dd-btn" type="button" aria-expanded="false" aria-controls="ddAreaMenu" aria-label="Show service area pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="dd-menu" id="ddAreaMenu"><a href="../louisville-co/">Louisville, CO</a><a href="../broomfield-co/">Broomfield, CO</a><a href="../boulder-co/">Boulder, CO</a><a href="../longmont-co/">Longmont, CO</a></div></div>
       <a href="../about/">About</a>
       <a href="#visit">Contact</a>
     </nav>
@@ -1172,7 +1179,7 @@ p{margin:0}
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mnav" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
   <div class="wrap"><nav class="mobile-nav" id="mnav" aria-label="Mobile">
-    <a href="../">Home</a><a href="../auto-accident-care/">Car Accident Care</a><a class="sub" href="../personal-injury/">Personal Injury</a><a class="sub" href="../whiplash/">Whiplash</a><a href="#services">Services</a><a class="sub" href="../adjustments/">Chiropractic Adjustments</a><a class="sub" href="../iastm/">IASTM</a><a class="sub" href="../dry-needling/">Dry Needling</a><a class="sub" href="../lasting-relief/">Maintenance Care</a><a href="../wellness-care/" aria-current="page">Family &amp; Athletes</a><a class="sub" href="../wellness-care/" aria-current="page">Wellness Care</a><a class="sub" href="../sports-injury/">Athletes &amp; Weekend Warriors</a><a class="sub" href="../prenatal-care/">Prenatal Care</a><a href="../expert-witness/">For Attorneys</a><a href="../medpay/">Financing</a><a class="sub" href="../medpay/">MedPay</a><a class="sub" href="../medical-financing/">Medical Financing</a><a href="../about/">About</a><a href="#visit">Contact</a><a href="tel:7207752664">Call (720) 775-2664</a>
+    <a href="../">Home</a><a href="../auto-accident-care/">Car Accident Care</a><a class="sub" href="../personal-injury/">Personal Injury</a><a class="sub" href="../whiplash/">Whiplash</a><a href="#services">Services</a><a class="sub" href="../adjustments/">Chiropractic Adjustments</a><a class="sub" href="../iastm/">IASTM</a><a class="sub" href="../dry-needling/">Dry Needling</a><a class="sub" href="../lasting-relief/">Maintenance Care</a><a href="../wellness-care/" aria-current="page">Family &amp; Athletes</a><a class="sub" href="../wellness-care/" aria-current="page">Wellness Care</a><a class="sub" href="../sports-injury/">Athletes &amp; Weekend Warriors</a><a class="sub" href="../prenatal-care/">Prenatal Care</a><a href="../expert-witness/">For Attorneys</a><a href="../medpay/">Financing</a><a class="sub" href="../medpay/">MedPay</a><a class="sub" href="../medical-financing/">Medical Financing</a><a href="../#area">Service Areas</a><a class="sub" href="../louisville-co/">Louisville, CO</a><a class="sub" href="../broomfield-co/">Broomfield, CO</a><a class="sub" href="../boulder-co/">Boulder, CO</a><a class="sub" href="../longmont-co/">Longmont, CO</a><a href="../about/">About</a><a href="#visit">Contact</a><a href="tel:7207752664">Call (720) 775-2664</a>
   </nav></div>
 </header>
 <main id="top">
